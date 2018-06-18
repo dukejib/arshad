@@ -2,17 +2,17 @@
 
 @section('content')
 
-<div>
-    <h2>Products
-        <br>
-        <small>All products of RibsnCuts</small>
-    </h2>
+
+<div class="row">
+    <div class="col-lg-10 col-sm-12 mt-4 mb-2">
+        <h2>Add New Product</h2>
+    </div>
+    <div class="col-lg-2 col-sm-12 mt-4 mb-2">
+    <a href="{{ route('product.create')}}" class="btn btn-success btn-block">Create New</a>
+    </div>
+    
 </div>
 
-<div>
-    <a href="{{ route('product.create') }}" class="btn btn-success">Create Product</a>
-</div>
-<br>
 
 <div>
 @if(count($products)>0)
@@ -36,14 +36,14 @@
         @foreach($products as $product)
         <tr>
             <td>
-                <img src="{{ asset('/assets/images/products/' . $product->image) }}" alt="" srcset="" width="100px">
+                <img src="{{ asset('/images/products/' . $product->image) }}" alt="" srcset="" width="100px">
             </td>
             <td>{{ $product->title }}</td>
             <td>{{ $product->category }}</td>
             <td>{{ $product->cut_source }}</td>
             <td>{{ $product->best_for }}</td>
             <td>{{ $product->price_per_kg }}</td>
-            <td>{{ $product->description }}</td>
+            <td>{{ str_limit($product->description,25) }}</td>
             <td>
                 <a href="{{ route('product.show',['id' => $product->id]) }}" class="btn btn-success">Show</a></td>
             <td>

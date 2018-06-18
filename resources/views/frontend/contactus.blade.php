@@ -2,29 +2,24 @@
 
 @section('content')
 
-<div class="container bg-transparent">
+<div class="container block-transparent">
     
     <div class="row">
 
-        <div class="col animated fadeInUp">
-            <h1>The Meat Masters</h1>
-            <p><h3>Our highly equipped and professional &quot;Meat Masters&quot; provides you the finely trimmed premium quality meat in all cuts.</h3></p>
+        <div class="animated fadeInUp text-center">
+            <h1 class="heading-all">Contact Us</h1>
+            <p class="text-justify"><h3>We are here to listen to your complains, queries and most definitely your "feedback" ,since you are our #1 priority</h3></p>
         </div>
-
-        <div class="col animated fadeInUp">
-            <img src="{{ asset('/assets/images/letsmeet-medium.png') }}" alt="" style="display:block;margin:auto;">
-        </div>
-
     </div>
 
 </div>
 
-<div class="container bg1">
+<div class="container block-product">
 
-    <!-- Contact form -->
-    <div class="contact-form form" id="getintouch">
+    <div class="container">
+        <h1 class="text-center heading-all">Get in Touch</h1>
+        <br>
         <div class="container">
-            <h1 class="text-center">Get in Touch</h1> 
             <!-- Form Start -->
             <form id="email_form">
                
@@ -38,26 +33,22 @@
                     <input type="text"  class="form-control form-control-lg" placeholder="Your Phone Number (03001234567)" name="number" id="number" required>
                 </div>
                 <div class="form-group">
-                    <select name="reason" id="reaosn" class="form-control">
-                        <option value="reason">Choose Your Reason</option>
-                        <option value="complain">Complain</option>
-                        <option value="feedback">Feedback</option>
-                        <option value="generalquery">General Query</option>
-                        <option value="jobs">Jobs</option>
+                    <select name="reason" id="reason" class="form-control">
+                        <option value="0">Choose Your Reason</option>
+                        <option value="Complain">Complain</option>
+                        <option value="Feedback">Feedback</option>
+                        <option value="General Query">General Query</option>
+                        <option value="Jobs">Jobs</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control form-control-lg" name="comment" id="comment" maxlength="6000" required></textarea>
+                    <textarea class="form-control form-control-lg" name="comment" id="comment" maxlength="3000" required></textarea>
                 </div>
                 <input type="submit" class="btn btn-danger btn-block rounded-0" value="Send" name="submit">
               
             </form>
             <!-- Form Start -->
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
     </div>
 
 </div>
@@ -65,6 +56,71 @@
 
 @endsection
 
+@section('scripts')
+<script>
+    //Post Url
+    $form_url = "{{ route('contactus.post') }}";
+    //Email System Here
+    $(document).ready(function(){
+
+        //Form Submit Starts Here
+        $('#email_form').submit(function(e)
+        {
+            e.preventDefault(); //Stop Submission
+            
+            $username = $('#username').val();
+            $email = $('#email').val();
+            $comment = $('#comment').val();
+            $number = $('#number').val();
+            $reason = $('#reason').val();
+
+            if($reason == 0){
+                swal({
+                    title: "Reason Required",
+                    text: "Please choose a valid reason.",
+                    icon:"warning"});
+                return;
+            }
+
+            /** You can use the following as well in ajax requrest */
+            //     data: $form.serialize(),
+            //     success: after_form_submitted, //This is callback functions
+            //     dataType: 'json'
+            
+            $.ajax({
+                type:"POST",
+                url: $form_url,
+                dataType: "json",
+                data: {username:$username,email:$email,comment:$comment,reason:$reason,number:$number,'_token':$('meta[name=csrf-token]').attr('content')},
+                success:function(obj){
+                    console.log(obj.result);
+                    swal({
+                        title:"Email Submitted",
+                        text:"Thank you for contacting us.",
+                        icon:"success"
+                    });
+                    // toastr.success(obj.result,'Operation Successful');
+                    //Reset the form
+                    $('#email_form')[0].reset();
+                    //WE are all done
+                     
+                    },
+                error:function(obj){
+                    // console.log('error happened');
+                    console.log(obj.error);
+                    swal({
+                        title:"Operation Failed",
+                        text:"Errors occured while sending your email. Please try again.",
+                        icon:"warning"
+                    });
+                    // toastr.error(obj.error,'Operation Failed');
+                    }
+            })
+        });
+        //Form Submit End Here
+    });    
+    </script>
+@endsection
 
 
 

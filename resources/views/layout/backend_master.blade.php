@@ -10,9 +10,9 @@
     <title>Ribs n Cuts</title>
 
     <!-- Style Sheets -->
-    <link rel="stylesheet" href="{{ asset('/assets/css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('/assets/css/backend.css')}}">
-    <link rel="stylesheet" href="{{ asset('/assets/css/toastr.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/backend.css')}}">
+    <link rel="stylesheet" href="{{ asset('/css/toastr.css') }}">
     <!-- Style Sheets -->
 
     <!-- External Style Sheets -->
@@ -40,9 +40,9 @@
 
 
 <!-- Scripts -->
-<script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
-<script src="{{ asset('assets/js/app.js') }}"></script>
-<script src="{{ asset('assets/js/toastr.js') }}"></script>
+<script src="{{ asset('/js/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ asset('/js/app.js') }}"></script>
+<script src="{{ asset('/js/toastr.js') }}"></script>
 
 @yield('scripts')
 <!-- Scripts -->

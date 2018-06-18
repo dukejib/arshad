@@ -1,0 +1,110 @@
+/* The Main colors */
+:root{
+    /* Netflix colors */
+    --main-red-color:#E50914;
+    --main-black-color:#221F1F;
+    --main-light-gray-color:#F5F5F1;
+    /* IKEA BLUE YELLOW */
+    --main-blue-color:#003399;
+    --main-yellow-color: #FFCC00;
+    --background-color: linear-gradient(to right, black 0%,black 50%,#000000 70%,var(--main-red-color) 30%, var(--main-red-color) 100%); /* W3C */
+} 
+ 
+/* setup fonts  */
+.heading-block-transparent {
+    font-family: 'Comfortaa', cursive;
+    font-weight: bold;
+}
+.heading-all{
+    font-family: 'Oxygen', sans-serif;
+    font-weight: bold;
+    padding:5px;
+}
+html{
+    font-family: 'Six Caps', sans-serif;
+}
+
+/* Background */
+body {
+    height:100%;
+    background-image: url("../images/bg-2.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
+    z-index: -1000;
+    background-color: white;
+}
+
+/* Make Navbar bootstrap 4.0 transparent */
+.navbar .navbar-brand {
+    color:white;
+    font-size:150%;
+    
+}
+.navbar-brand{
+    cursor: pointer;
+}
+.navbar-nav .nav-item a{
+    color:white;
+    font-size:125%;
+}
+.navbar-nav .nav-item a:hover{
+    color:white;
+}
+
+.block-transparent{
+    padding:35px 20px;
+    color:white;
+    font-weight: bold;
+    /* border: 1px solid; */
+}
+
+.block-product {
+    padding:20px 20px;
+    background-color: white;
+}
+
+.block-display-fullwidth {
+    padding:20px 20px;
+    
+    background:black;
+    color:white;
+}
+
+.map-fullwidth {
+    padding-top:20px 20px;
+    height:500px;
+    background-color: white;
+}
+
+/* For Google Map */
+#map {
+    height: 400px;  /* The height is 400 pixels */
+    width: 100%;  /* The width is the width of the web page */
+}
+
+footer {
+    padding-left:30px;
+    padding-right:30px;
+    line-height: 100px;
+    margin-top:50px;
+    background-color:black;
+    color:white;
+}
+/* color fontawesome social buttons */
+.fa-facebook-square:hover , .fa-twitter-square:hover , .fa-instagram:hover , .fa-google-plus-square:hover {
+    color:var(--main-red-color);
+    text-shadow: 1px 1px 1px #ccc;
+  
+}
+/* Vertial Or Div */
+.or-div {
+    position: absolute;
+    background: #fff;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -22px;
+    padding: 10px;
+    border-radius: 50%;
+    color: #aaa;
+    text-align: center;
+}

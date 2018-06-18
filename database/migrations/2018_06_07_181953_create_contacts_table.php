@@ -18,7 +18,7 @@ class CreateContactsTable extends Migration
             $table->string('username');
             $table->string('email');
             $table->text('comment');
-            $table->string('type'); //What type of contact was made?
+            // $table->string('type'); //What type of contact was made?
             $table->boolean('read')->default(0); //If the contact is read or not 0-not 1-Yes
             $table->string('reason'); //Contact Reason.
             $table->timestamps();

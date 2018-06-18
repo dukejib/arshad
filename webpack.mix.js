@@ -11,5 +11,14 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+mix.js('resources/assets/js/app.js', 'public/js')   
+   .sass('resources/assets/sass/app.scss', 'public/css')
+   .browserSync({
+    proxy:'http://localhost/ribsncuts/public/landing',
+    files:[
+        'public/**/*.html','public/css/**/*.css','public/js/**/*.js'
+    ]
+});
+// .options({
+//     processCssUrls: false
+//  });   //Added by me

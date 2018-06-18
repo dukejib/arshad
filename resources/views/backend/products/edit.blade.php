@@ -2,7 +2,14 @@
 
 @section('content')
 
-<h2>Add New Product</h2>
+<div class="row">
+    <div class="col-lg-10 col-sm-12 mt-4 mb-2">
+        <h2>Edit Product</h2>
+    </div>
+    <div class="col-lg-2 col-sm-12 mt-4 mb-2">
+    <a href="{{ route('product.index')}}" class="btn btn-success btn-block">Go Back</a>
+    </div>
+</div>
 
 @include('includes.errors')
 <br>
@@ -47,7 +54,7 @@
     </div>
     <div class="from-group">
         <label for="">Exisiting Image (Ensure that Image size is <strong>700x450px</strong> only, otherwise, it will look bad)</label>
-        <img src="{{ asset('/assets/images/products/' . $product->image) }}" alt="" srcset="" width="350px" class="form-control"> 
+        <img src="{{ asset('/images/products/' . $product->image) }}" alt="" srcset="" width="350px" class="form-control"> 
     </div>
     <div class="form-group">
         {{-- <label for="image" class="btn btn-info pull-left">Add Product Image</label> --}}

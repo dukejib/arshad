@@ -20,8 +20,9 @@ Route::get('/', function () {
 /** All Frontend Routes */
 Route::get('/landing','FrontEndController@index')->name('home');
 Route::get('/contactus','FrontEndController@contactus')->name('contactus');
+Route::post('/contactus','FrontEndController@post_contactus')->name('contactus.post');
 Route::get('/product/{slug}','FrontEndController@get_product')->name('view.product');
-Route::get('/products/{slug}','ForntEndController@get_products')->name('view.prdducts');
+Route::get('/products/{slug}','FrontEndController@get_products')->name('view.products');
 
 /** All Administration Routes */
 Route::prefix('backend')->group(function(){
