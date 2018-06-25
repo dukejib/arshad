@@ -13,10 +13,11 @@ let mix = require('laravel-mix');
 
 mix.js('resources/assets/js/app.js', 'public/js')   
    .sass('resources/assets/sass/app.scss', 'public/css')
+//    .copy('resources/assets/images/', 'public/images', false) // Don't flatten!
    .browserSync({
     proxy:'http://localhost/ribsncuts/public/landing',
     files:[
-        'public/**/*.html','public/css/**/*.css','public/js/**/*.js'
+        'public/**/*.html','public/css/**/*.css','public/js/**/*.js','resources/views/**/*.blade.php'
     ]
 });
 // .options({

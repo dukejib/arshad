@@ -1,4 +1,195 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);/*!
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@import url(https://fonts.googleapis.com/css?family=Six+Caps);@import url(https://fonts.googleapis.com/css?family=Oxygen);@import url(https://fonts.googleapis.com/css?family=Comfortaa);/* W3C */
+
+/* setup fonts  */
+
+.heading-block-transparent {
+  font-family: 'Comfortaa', cursive;
+  font-weight: bold;
+}
+
+@media (max-width: 416px) {
+  .heading-block-transparent {
+    font-weight: normal;
+  }
+}
+
+.heading-all {
+  font-family: 'Oxygen', sans-serif;
+  font-weight: bold;
+  padding: 5px;
+}
+
+html {
+  font-family: 'Six Caps', sans-serif;
+}
+
+/* Make Navbar bootstrap 4.0 transparent */
+
+.navbar {
+  width: 100%;
+  background: none !important;
+}
+
+@media (max-width: 412px) {
+  .navbar {
+    background: black !important;
+  }
+}
+
+@media (max-width: 412px) {
+  .navbar .navbar-brand {
+    float: left;
+  }
+}
+
+.navbar .navbar-toggler {
+  cursor: pointer;
+  outline: 0;
+  color: #fff;
+}
+
+.navbar .nav-link {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+}
+
+.navbar .nav-item {
+  padding: 0 1rem;
+}
+
+@media (max-width: 32px) {
+  .navbar .nav-item {
+    padding: 0;
+  }
+}
+
+@media (max-width: 412px) {
+  .navbar .nav-item .nav-link {
+    font-weight: normal;
+    color: #fff !important;
+    background: #000000;
+    text-align: left;
+  }
+}
+
+.block-transparent {
+  padding: 35px 20px;
+  color: white;
+  font-weight: bold;
+  /* border: 1px solid; */
+}
+
+.block-white {
+  padding: 20px 20px;
+  background-color: white;
+}
+
+.block-black {
+  padding: 20px 20px;
+  background: black;
+  color: white;
+}
+
+/* For Google Map */
+
+.map-white {
+  padding-top: 20px 20px;
+  height: 500px;
+  background-color: white;
+}
+
+/* For Google Map */
+
+#map {
+  height: 400px;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */
+}
+
+footer {
+  padding-left: 30px;
+  padding-right: 30px;
+  line-height: 100px;
+  margin-top: 50px;
+  background-color: black;
+  color: white;
+}
+
+.vertical-divider {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  height: 50%;
+  line-height: 0;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.vertical-divider:before,
+.vertical-divider:after {
+  position: absolute;
+  left: 50%;
+  content: '';
+  z-index: 9;
+  border-left: 1px solid rgba(34, 36, 38, 0.15);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  width: 0;
+  height: calc(100% - 1rem);
+}
+
+.row-divided > .vertical-divider {
+  height: calc(50% - 1rem);
+}
+
+.vertical-divider:before {
+  top: -100%;
+}
+
+.vertical-divider:after {
+  top: auto;
+  bottom: 0;
+}
+
+.row-divided {
+  position: relative;
+}
+
+.row-divided > [class^="col-"],
+.row-divided > [class*=" col-"] {
+  padding-left: 30px;
+  /* gutter width (give a little extra room) 2x default */
+  padding-right: 30px;
+  /* gutter width (give a little extra room) 2x default */
+}
+
+/* just to set different column heights - not needed to function */
+
+.column-one {
+  height: 300px;
+  background-color: #EBFFF9;
+}
+
+.column-two {
+  height: 400px;
+  background-color: #F7F3FF;
+}
+
+.fa-facebook-square:hover,
+.fa-twitter-square:hover,
+.fa-pinterest-square:hover,
+.fa-google-plus-square:hover {
+  color: #dc3545;
+}
+
+/*!
  * Bootstrap v4.1.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
  * Copyright 2011-2018 Twitter, Inc.

@@ -3,7 +3,7 @@
 <br>
 <br>
 <br>
-<div class="container block-product">
+<div class="container block-white">
     <h1 class="heading-all text-center">All Cuts</h1>
     <br>
 

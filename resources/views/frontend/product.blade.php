@@ -1,11 +1,33 @@
 @extends('layout.frontend_master')
 
+@section('meta-tags')
+    {{-- For Facebook --}}
+    <meta property="fb:app_id"                  content="237986806787117">
+    <meta property="og:url"                     content="{{ route('view.product',['slug' => $product->slug ]) }}" />
+    <meta property="og:type"                    content="website" />
+    <meta property="og:title"                   content="{{ $product->title }}" />
+    <meta property="og:description"             content="{{ $product->description }}"/>
+    <meta property="og:image"                   content="{{ asset('/images/products/' . $product->image) }}" />
+    <meta property="article:author"             content="Ribsncuts" />
+    <meta property="article:publisher"          content="Ribsncuts" />
+    <meta property="og:image:width"             content="700" />
+    <meta property="og:image:height"            content="450" />
+    {{-- For Twitter --}}
+    <meta name="twitter:card" content="A Product from Ribsncuts">
+    <meta name="twitter:site" content="Ribsncuts">
+    <meta name="twitter:title" content="{{ $product->title }}">
+    <meta name="twitter:description" content="{{ $product->description }}">
+    <meta name="twitter:creator" content="Ribsncuts">
+    <meta name="twitter:image" content="{{ asset('/images/products/' . $product->image) }}">
+    <meta name="twitter:domain" content="ribsncuts.com">
+@endsection
+
 @section('content')
 <br>
 <br>
 <br>
-<div class="container block-product">
-
+<div class="container block-white">
+        
     {{-- <div class="container"> --}}
         
         <div class="row">
@@ -25,11 +47,37 @@
                     </div>
                     <hr>
                     <div class="col-lg-12 mb-4">
-                        <strong>Share it!</strong>
-                        <i class="fa fa-facebook-square fa-2x" title="facebook"></i>
-                        <i class="fa fa-twitter-square fa-2x" title="twitter"></i>
-                        <i class="fa fa-instagram fa-2x" title="instagram"></i>
-                        <i class="fa fa-google-plus-square fa-2x" title="Google +"></i>
+                            Share It!
+                            {{-- Facebook --}}
+                            <a target="_blank" 
+                            onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={{ route('view.product',['slug' => $product->slug ]) }}&amp;src=sdkpreparse','Facebook Share','width=600,height=400'); return false;"
+                            >
+                            <i class="fa fa-facebook-square fa-2x"></i>
+                            </a>
+
+
+                            {{-- Twitter --}}
+                            <a target="_blank" 
+                            onclick="window.open('http://twitter.com/share?url={{ route('view.product',['slug' => $product->slug ]) }}&amp;via=ribsncuts.com&amp;text=Let us  Shop','Twitter Share','width=600,height=400'); return false;"
+                            >
+                            <i class="fa fa-twitter-square fa-2x"></i>
+                            </a>
+
+
+                            {{-- Pinterest --}}
+                            <a target="_blank" 
+                            onclick="window.open('https://www.pinterest.com/pin/create/button/?url={{ route('view.product',['slug' => $product->slug ]) }}&amp;media={{ asset('/images/products/' . $product->image) }}&amp;description={{$product->description}}','Pinterest Share','width=600,height=400'); return false;"
+                            >
+                            <i class="fa fa-pinterest-square fa-2x"></i>
+                            </a>
+
+                            {{-- Google Plus --}}
+                            <a target="_blank" 
+                            onclick="window.open('https://plus.google.com/share?url={{ route('view.product',['slug' => $product->slug ]) }}',
+                            'Google Share', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+                            <i class="fa fa-google-plus-square fa-2x"></i>
+                            </a>
+                     
                     </div>
                 </div>
                 
@@ -108,4 +156,11 @@
 </div>
     
 
+@endsection
+
+@section('scripts')
+{{-- Twitter Required --}}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+{{-- Pinterest --}}
+<script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script>
 @endsection

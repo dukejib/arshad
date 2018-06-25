@@ -21,7 +21,7 @@
 </div>
 
 {{-- Products --}}
-<div class="container block-product">
+<div class="container block-white">
 
     <div class="container">
         <h1 class="text-center heading-all">Our Cuts</h1>
@@ -56,7 +56,7 @@
 </div>
 
 {{-- Delivery --}}
-<div class="block-display-fullwidth">
+<div class="block-black">
     <h1 class="heading-all">About Our Products</h1>
     <div class="row">
         <div class="col-lg-6 col-sm-12">
@@ -85,7 +85,7 @@
 </div>
 
 {{-- Map --}}
-<div class="bg3-fullwidth">
+<div class="map-white">
     <div class="container">
         <h1 class="text-center heading-all">Visit our Outlet</h1>
         <br>

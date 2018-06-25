@@ -110,7 +110,8 @@ class ProductController extends Controller
             'cut_source' => 'required|min:4',
             'best_for' => 'required',
             'description' => 'required',
-            'price_per_kg' => 'required|numeric'
+            'price_per_kg' => 'required|numeric',
+            'category' => 'required'
         ]);
         //Update Product
         $product = Product::find($id);

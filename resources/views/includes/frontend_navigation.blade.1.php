@@ -17,7 +17,7 @@
             </div>
                 
             {{-- Brand Logo --}}
-            <div class="d-flex justify-content-center">
+            <div class="mx-auto order-0 order-sm-0">
                 <a class="navbar-brand mx-auto" href="{{route('home') }}">
                     <img src="{{ asset('/images/ribsncuts-64.png') }}" alt="RibsnCuts Logo" srcset="{{ asset('/images/ribsncuts-128.png') }} 1920w,{{ asset('/images/ribsncuts-96.png') }} 1500w,{{ asset('/images/ribsncuts-64.png') }} 1280w,{{ asset('/images/ribsncuts-64.png') }} 768w">
                 </a>

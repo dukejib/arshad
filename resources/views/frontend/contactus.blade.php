@@ -14,7 +14,7 @@
 
 </div>
 
-<div class="container block-product">
+<div class="container block-white">
 
     <div class="container">
         <h1 class="text-center heading-all">Get in Touch</h1>

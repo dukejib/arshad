@@ -1,0 +1,19 @@
+
+/* Background */
+/* body {
+    height:100%;
+    background-image: url("../images/bg-2.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
+    z-index: -1000;
+    background-color: black;
+} */
+
+#hero {
+    background-image: url("../images/bg-2.jpg");
+    background-repeat: no-repeat;
+}
+
+body{
+    background-color:#fff;
+}

@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
+
+    <title>Ribs n Cuts</title>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Ali Jibran">
     <meta name="createdby" content="http://karacraft.com">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
-    <title>Ribs n Cuts</title>
+    @yield('meta-tags')     {{-- Get Special Meta Tages for Facebook Share --}}
 
     <!-- Style Sheets -->
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/ribsncuts.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/base.css')}}">
+    {{-- <link rel="stylesheet" href="{{ asset('/css/ribsncuts.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('/css/toastr.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/owl.theme.default.min.css')}}">
@@ -25,13 +28,13 @@
 
     <!-- Google Fonts -->
     {{-- <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">  --}}
-    <link href="https://fonts.googleapis.com/css?family=Six+Caps" rel="stylesheet"> 
+    {{-- <link href="https://fonts.googleapis.com/css?family=Six+Caps" rel="stylesheet">  --}}
     {{-- <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"> --}}
     {{-- <link href="https://fonts.googleapis.com/css?family=Dorsa" rel="stylesheet">  --}}
     {{-- <link href="https://fonts.googleapis.com/css?family=Palanquin" rel="stylesheet">  --}}
-    <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet"> 
+    {{-- <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">  --}}
     {{-- <link href="https://fonts.googleapis.com/css?family=Meera+Inimai" rel="stylesheet">  --}}
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet"> 
+    {{-- <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">  --}}
 
 
     <!-- Favicon -->
@@ -53,64 +56,109 @@
     <meta name="msapplication-TileImage" content="{{ asset('/images/icons/ms-icon-144x144.png') }}">
     <meta name="theme-color" content="#ffffff">
 
+    <style>
+  
+    </style>
 
 </head>
 
 <body>
-   
+
+    <div id="hero">
+        @include('includes.frontend_navigation')
+        @yield('content')
+    </div>
     
-    @include('includes.frontend_navigation')
+    {{-- <img src="../public/images/bg-2.jpg"> --}}
+    {{-- @include('includes.frontend_navigation') --}}
     
-    @yield('content')
+    {{-- @yield('content') --}}
     
 
     <footer>
         <div class="container">
-            <h1 class="heading-all">Quick Links</h1>
+            <h3 class="heading-all">Quick Links</h3>
+
             <div class="row">
                 
-                <div class="col-xs-12 col-sm-12 col-lg-4">
-                    <ul>
-                        <li>Info # 1</li>
-                        <li>Info # 2</li>
-                        <li>Info # 3</li>
-                    </ul>
+                {{-- Line # 1 --}}
+                <div class="col-sm-12 col-md-4">
+                    <div class="row">
+                        <p style="padding:0;margin:0">Follow Us</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3">
+                            <ul style="list-style: none;padding:0;margin:0;">
+                                <li><i class="fa fa-facebook-square fa-2x"></i></li>
+                                <li><i class="fa fa-google-plus-square fa-2x"></i></li>
+                                <li><i class="fa fa-twitter-square fa-2x"></i></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-9 col-md-9">
+                            <ul style="list-style: none;padding:0;margin:0;">
+                                <li>ribsncuts@facebook.com</li>
+                                <li>ribsncuts@gmail.com</li>
+                                <li>ribsncuts@twitter.com</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="col-xs-12 col-sm-12 col-lg-4">
-                    <ul>
-                        <li>Info # 1</li>
-                        <li>Info # 2</li>
-                        <li>Info # 3</li>
-                    </ul>
+
+                {{-- Line # 2 --}}
+                <div class="col-sm-12 col-md-4">
+                    <div class="row">
+                        <p style="padding:0;margin:0">COntact Us</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3">
+                            <ul style="list-style: none;padding:0;margin:0;">
+                                <li><i class="fa fa-facebook-square fa-2x"></i></li>
+                                <li><i class="fa fa-google-plus-square fa-2x"></i></li>
+                                <li><i class="fa fa-twitter-square fa-2x"></i></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-9 col-md-9">
+                            <ul style="list-style: none;padding:0;margin:0;">
+                                <li>ribsncuts@gmail.com</li>
+                                <li>ribsncuts@facebook.com</lip-0>
+                                <li>ribsncuts@twitter.com</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="col-xs-12 col-sm-12 col-lg-4">
-                    <ul>
-                        <li>Info # 1</li>
-                        <li>Info # 2</li>
-                        <li>Info # 3</li>
-                    </ul>
+               
+                {{-- Line # 3 --}}
+                <div class="col-sm-12 col-md-4">
+                    <div class="row">
+                        <p style="padding:0;margin:0">COntact Us</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3">
+                            <ul style="list-style: none;padding:0;margin:0;">
+                                <li><i class="fa fa-facebook-square fa-2x"></i></li>
+                                <li><i class="fa fa-google-plus-square fa-2x"></i></li>
+                                <li><i class="fa fa-twitter-square fa-2x"></i></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-9 col-md-9">
+                            <ul style="list-style: none;padding:0;margin:0;">
+                                <li>ribsncuts@gmail.com</li>
+                                <li>ribsncuts@facebook.com</lip-0>
+                                <li>ribsncuts@twitter.com</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </footer>
 
 
-<!-- Scripts -->
-<script src="{{ asset('/js/jquery-3.3.1.min.js') }}"></script>
-<script src="{{ asset('/js/app.js') }}"></script>
-<script src="{{ asset('/js/toastr.js') }}"></script>
-<script src="{{ asset('/js/ribsncuts.js') }}"></script>
-<script src="{{ asset('/js/owl.carousel.min.js') }}"></script> 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<!-- Scripts -->
-@yield('scripts')
 
-
-{{-- Login Modal --}}
+    {{-- Login Modal --}}
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalCenterTitle">Please Login</h5>
@@ -119,41 +167,33 @@
             </button>
         </div>
         <div class="modal-body">
-            <div class="row">
-
-                <div class="col-lg-12">
-                        <div class="col-lg-6 col-xs-12 col-sm-6">
-                                <h3>What is your email address</h3>
-                                <input type="email" name="email" id="email" class="form-control rounded-0" placeholder="Your Email" maxlength="64">
-                                <p class="marg-b0">
-                                    <small id="login_email_error"></small>
-                                </p>
-                                <input type="password" name="password" id="password" class="form-control rounded-0" placeholder="Your Password">
-                                <p class="marg-b0">
-                                    <small id="login_password_error"></small>
-                                </p>
-                                <button class="btn btn-danger btn-block rounded-0" onclick="user_login()">Login</button>
-                                <div class="or-div">OR</div>
-                            </div>
-                                
-                            <div class="col-lg-6 col-xs-12 col-sm-6">
-                                <div class="col-lg-6 col-xs-12 col-sm-6   text-center login-second-row" style="border-right: 0px;">
-                                        <form class="form">
-                                            <h3 class="lineHeight22">Sign in with your<br>
-                                                social account</h3>
-                                            <h5>Login with your Facebook account</h5>
-                                            <button type="button" class="btn btn-primary fullWidth  ">Facebook</button>
-                                        </form>
-                                    </div>
-                            </div>
-                            
+            <div class="row row-divided">
+                
+                <div class="col-md-6 column-2">
+                    <h5>What is your email address</h5>
+                    <input type="email" name="email" id="email" class="form-control rounded-0" placeholder="Your Email" maxlength="64">
+                    <p class="marg-b0">
+                        <small id="login_email_error"></small>
+                    </p>
+                    <input type="password" name="password" id="password" class="form-control rounded-0" placeholder="Your Password">
+                    <p class="marg-b0">
+                        <small id="login_password_error"></small>
+                    </p>
+                    <button class="btn btn-success btn-block rounded-0" onclick="user_login()"><i class="fa fa-login"></i> Login</button>
                 </div>
-                <div class="col-xs-12">
-                        <p class="text-left "><a class="redColor" href="http://www.meatone.net/forgot">Forgot
-                                password</a></p>
-                        <p class=" text-left" data-toggle="modal" data-target="#registerPopup"><a href="#">New to
-                                Meat One? Sign-up now!</a></p>
-                    </div>
+
+                <div class="vertical-divider">or</div>
+
+                <div class="col-md-6 column-1">
+                    <form class="form">
+                        <h5>Login with your social account</h5>
+                        <p>Facebook</p>
+                        <button type="button" class="btn btn-primary rounded-0 btn-block"><i class="fa fa-facebook"></i> Facebook</button>
+                        <p>Goolge Plus</p>
+                        <button type="button" class="btn btn-danger rounded-0 btn-block"><i class="fa fa-google-plus-square"></i> Goolge Plus</button>
+                    </form>
+                </div>
+                    
              
             </div>
             
@@ -162,7 +202,17 @@
         </div>
     </div>
 </div>
-    
+
+<!-- Scripts -->
+<script src="{{ asset('/js/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ asset('/js/app.js') }}"></script>
+<script src="{{ asset('/js/toastr.js') }}"></script>
+<script src="{{ asset('/js/ribsncuts.js') }}"></script>
+<script src="{{ asset('/js/owl.carousel.min.js') }}"></script> 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<!-- Scripts -->
+@yield('scripts')
 
 </body>
 </html>
