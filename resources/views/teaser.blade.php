@@ -52,15 +52,15 @@
         <div class="col-left">
             <span class="helper"></span>
             <img class="centerImg animated fadeIn"
-            srcset="{{ asset('/images/ribsncuts-small.png')}} 320w,
-                    {{ asset('/images/ribsncuts-small.png')}} 480w,
-                    {{ asset('/images/ribsncuts-small.png')}} 640w,
-                    {{ asset('/images/ribsncuts-large.png')}} 800w,"
+            srcset="{{ asset('/images/ribsncuts-96.png')}} 320w,
+                    {{ asset('/images/ribsncuts-96.png')}} 480w,
+                    {{ asset('/images/ribsncuts-128.png')}} 640w,
+                    {{ asset('/images/ribsncuts-256.png')}} 800w,"
             sizes = "(max-width:320px)  280px,
                     (max-width:480px) 440px,
                     (max-width:640px) 600px,
                     800px"
-            src="{{ asset('/images/ribsncuts-large.png') }}" 
+            src="{{ asset('/images/ribsncuts-256.png') }}" 
             alt="ribsncuts - Let's meet premium quality">
 
         </div>

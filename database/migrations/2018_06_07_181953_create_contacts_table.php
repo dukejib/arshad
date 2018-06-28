@@ -17,10 +17,10 @@ class CreateContactsTable extends Migration
             $table->increments('id');
             $table->string('username');
             $table->string('email');
-            $table->text('comment');
-            // $table->string('type'); //What type of contact was made?
-            $table->boolean('read')->default(0); //If the contact is read or not 0-not 1-Yes
+            $table->string('number');
             $table->string('reason'); //Contact Reason.
+            $table->text('comment');
+            $table->boolean('read')->default(0); //If the contact is read or not 0-not 1-Yes
             $table->timestamps();
         });
     }

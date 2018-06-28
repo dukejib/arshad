@@ -1,9 +1,15 @@
-@extends('layout.backend_master')
+@extends('layouts.app')
 
 @section('content')
 
-    <div class="container-fluid">
+<div class="row">
 
+    <div class="col-md-3">
+        {{-- Sidebar Here --}}
+        @include('includes.sidebar_navigation')
+    </div>
+
+    <div class="col-md-9">
         <div class="row">
 
             <div class="col">
@@ -67,9 +73,9 @@
                         </div>
 
         </div>
-
-
     </div>
-    
+
+</div>
+
 
 @endsection

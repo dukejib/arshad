@@ -1,4 +1,4 @@
-@extends('layout.frontend_master')
+@extends('layouts.frontend_master')
 
 @section('content')
 
@@ -9,7 +9,9 @@
 
         <div class="col-lg-6 col-sm-12 animated fadeInLeft">
             <h1 class="heading-block-transparent">The Meat Masters</h1>
-            <p class="text-justify"><h3>Our highly equipped and professional &quot;Meat Masters&quot; provides you the finely trimmed premium quality meat in all cuts.</h3></p>
+            <p class="text-justify">
+                <p class="subheading">Our highly equipped and professional &quot;Meat Masters&quot; provides you the finely trimmed premium quality meat in all cuts.</p>
+            </p>
         </div>
 
         <div class="col-lg-6 col-sm-12 animated fadeInRight">
@@ -24,8 +26,8 @@
 <div class="container block-white">
 
     <div class="container">
-        <h1 class="text-center heading-all">Our Cuts</h1>
-        <br>
+        <h2 class="heading-all">Our Cuts</h2>
+
         <div class="owl-carousel owl-theme animated fadeInUp">
 
             @foreach($products as $product) 
@@ -33,8 +35,7 @@
             <div class="card">
                 <h5 class="card-header text-center bg-danger text-white rounded-0">{{ $product->title }}</h5>
                 <a href="{{ route('view.product',['slug' => $product->slug ]) }}">
-
-                        <img class="card-img-top rounded-0" src="{{ asset('/images/products/' . $product->image) }}" alt="{{ $product->title }}">
+                    <img class="card-img-top rounded-0" src="{{ asset('/images/products/' . $product->image) }}" alt="{{ $product->title }}">
                 </a>
                 <div class="card-body rounded-0">
                   <p class="card-text">{!! str_limit($product->description,100) !!}</p>
@@ -47,9 +48,7 @@
         </div>
 
     </div>
-       
-    <br>
-    <br>
+
     <br>
     <br>
 
@@ -57,38 +56,42 @@
 
 {{-- Delivery --}}
 <div class="block-black">
-    <h1 class="heading-all">About Our Products</h1>
-    <div class="row">
-        <div class="col-lg-6 col-sm-12">
-            <div class="row">
-                <div class="col-sm-6">
-                    <ul>
-                        <li># 1</li>
-                        <li># 2</li>
-                        <li># 3</li>
-                    </ul>
+    <div class="container">
+        <h2 class="heading-all">About Our Products</h2>
+    
+        <div class="row">
+            <div class="col-lg-6 col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <ul>
+                            <li># 1</li>
+                            <li># 2</li>
+                            <li># 3</li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6">
+                        <ul>
+                            <li># 1</li>
+                            <li># 2</li>
+                            <li># 3</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <ul>
-                        <li># 1</li>
-                        <li># 2</li>
-                        <li># 3</li>
-                    </ul>
-                </div>
+                <br>
             </div>
-            <br>
+            <div class="col-lg-6 col-sm-12">
+                <img src="{{ asset('/images/rider.png') }}" alt="" srcset="" class="img-fluid mx-auto d-block">
+            </div>
         </div>
-        <div class="col-lg-6 col-sm-12">
-            <img src="{{ asset('/images/rider.png') }}" alt="" srcset="" class="img-fluid mx-auto d-block">
-        </div>
+
     </div>
 </div>
 
 {{-- Map --}}
 <div class="map-white">
     <div class="container">
-        <h1 class="text-center heading-all">Visit our Outlet</h1>
-        <br>
+        <h2 class="heading-all">Visit our Outlet</h2>
+        
         {{-- Map --}}
         <div id="map">
             

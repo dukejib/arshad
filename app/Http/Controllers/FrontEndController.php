@@ -52,6 +52,7 @@ class FrontEndController extends Controller
     public function get_products($slug){
         $product = Product::where('category',$slug)->get();
         return view('frontend.products')
+        ->with('category',$slug)
         ->with('products',$product);
     }
 }

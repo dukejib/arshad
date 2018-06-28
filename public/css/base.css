@@ -17,3 +17,9 @@
 body{
     background-color:#fff;
 }
+/* 
+.heading-all::before{
+    content:url("../images/3dots.png")
+    color:white;
+    background:#dc3545;
+} */

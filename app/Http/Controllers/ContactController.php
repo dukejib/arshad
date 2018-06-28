@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Contact;
+use Illuminate\Support\Facades\Session;
 
 class ContactController extends Controller
 {
@@ -13,7 +15,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('backend.contacts.index');
+        $contacts = Contact::all();
+        return view('backend.contacts.index')
+        ->with('contacts',$contacts);
     }
 
     /**
@@ -80,5 +84,15 @@ class ContactController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function make_contact_read($id)
+    {
+        $contact = Contact::find($id);
+        $contact->read = 1;
+        $contact->save();
+
+        Session::flash('success','contact read');
+        return redirect()->back();
     }
 }

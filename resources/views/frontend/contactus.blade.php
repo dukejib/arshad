@@ -1,4 +1,4 @@
-@extends('layout.frontend_master')
+@extends('layouts.frontend_master')
 
 @section('content')
 
@@ -17,7 +17,7 @@
 <div class="container block-white">
 
     <div class="container">
-        <h1 class="text-center heading-all">Get in Touch</h1>
+        <h1 class="heading-all">Get in Touch</h1>
         <br>
         <div class="container">
             <!-- Form Start -->

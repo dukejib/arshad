@@ -6,21 +6,50 @@
 @import url('https://fonts.googleapis.com/css?family=Comfortaa');
 
 $background-color: linear-gradient(to right, black 0%,black 50%,#000000 70%,var(--main-red-color) 30%, var(--main-red-color) 100%); /* W3C */
-
-/* setup fonts  */
-.heading-block-transparent {
-    font-family: 'Comfortaa', cursive;
-    font-weight: bold;
-
-    @media(max-width:416px){
-        font-weight: normal;
-    }
-}
+$smallscreensize:416px; //Change this to effect it every where
+$rnc-red:#dc3545;
+/** Headings */
+//$font-size-base:1rem !default; // Assumes the browser default, typically `16px`
+//h1 * font-size-base * 2.5
 .heading-all{
     font-family: 'Oxygen', sans-serif;
-    font-weight: bold;
+    font-weight: 900;
     padding:5px;
+
+    @media(max-width:$smallscreensize){
+        font-weight: 600;
+        font-size: 1rem * 1.25;
+    }
 }
+
+.heading-block-transparent {
+    font-family: 'Comfortaa', cursive;
+    font-weight: 900;
+
+    @media(max-width:$smallscreensize){
+        font-weight: 600;
+        font-size: 1rem * 1.75;
+    }
+}
+
+.subheading {
+    font-size: 1rem * 1.75;
+    font-weight: 500;
+
+    @media (max-width:$smallscreensize){
+        font-weight: 500;
+        font-size: 1rem * 1.15;
+    }
+}
+
+.make-me-block{
+    @media (max-width:$smallscreensize){
+       width:100%;
+       display: block;
+       margin:0;
+    }
+}
+
 html{
     font-family: 'Six Caps', sans-serif;
 }
@@ -164,7 +193,7 @@ footer {
 
 //   Color Social Media Icons
 .fa-facebook-square:hover , .fa-twitter-square:hover , .fa-pinterest-square:hover , .fa-google-plus-square:hover {
-color:#dc3545;
+color:$rnc-red;
 }
 
 

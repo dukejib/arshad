@@ -1,13 +1,38 @@
-@extends('layout.frontend_master') 
+@extends('layouts.frontend_master') 
 @section('content')
-<br>
-<br>
-<br>
+
+
+{{-- Beef/Mutton Picture Here--}}
+<div class="container block-transparent">
+    
+        <div class="row">
+    
+            <div class="col-lg-6 col-sm-12 animated fadeInLeft">
+                <h1 class="heading-block-transparent">The Meat Masters</h1>
+                <p class="text-justify">
+                    <p class="subheading">
+
+                            Ribsncuts offers you a complete variety of Mutton cuts produced by quality bred goats treated with tenderness and a committed shariah compliant process. At Meat One, customers are always our first priority!</p>
+                </p>
+            </div>
+    
+            <div class="col-lg-6 col-sm-12 animated fadeInRight">
+                @if($category == 'Beef')
+                <img src="{{ asset('/images/cow-tray.jpg') }}" alt="" style="display:block;margin:auto;" width="400px">
+                @elseif ($category == 'Mutton')
+                <img src="{{ asset('/images/goat-tray.jpg') }}" alt="" style="display:block;margin:auto;" width="400px">
+                @endif
+            </div>
+    
+        </div>
+    
+    </div>
+
+
 <div class="container block-white">
-    <h1 class="heading-all text-center">All Cuts</h1>
-    <br>
 
     <div class="container">
+            <h2 class="heading-all">All Cuts</h2>
 
         @foreach($products->chunk(3) as $productChunk)
         <div class="row">
@@ -33,8 +58,6 @@
 
     </div>
 
-    <br>
-    <br>
     <br>
     <br>
 
