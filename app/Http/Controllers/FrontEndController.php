@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Product;
 use App\Contact;
+use App\Product;
+use Illuminate\Http\Request;
+use App\Events\ContactMadeEvent;
 use PHPUnit\Framework\MockObject\Stub\Exception;
 
 class FrontEndController extends Controller
@@ -28,14 +29,17 @@ class FrontEndController extends Controller
         $number = $request->number;
 
         try{
-            Contact::create([
+            $contact = Contact::create([
                 'username' => $username,
                 'email' => $email,
                 'reason' => $reason,
                 'comment' => $comment,
                 'number' => $number
             ]);
-    
+            
+            //Generate the Event;
+            event(new ContactMadeEvent($contact));
+            //Return the response
             return response()->json("Thankyou for contacting us.",200);
 
         }catch(Exception $e){
@@ -54,6 +58,16 @@ class FrontEndController extends Controller
         return view('frontend.products')
         ->with('category',$slug)
         ->with('products',$product);
+    }
+
+    public function user_register()
+    {
+        return response()->json(route('register'));
+    }
+
+    public function user_passforgot()
+    {
+        // return redirect()->route('');
     }
 }
 

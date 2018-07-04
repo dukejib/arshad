@@ -67,7 +67,10 @@ return [
 
     // 'timezone' => 'UTC',
     'timezone' => 'Asia/Karachi',
-
+    'administrators' => [
+        'dukejib@gmail.com',
+        'alijib@outlook.com',
+    ],
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration
@@ -147,6 +150,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class, //Cart for Ribsnctus 
 
         /*
          * Package Service Providers...
@@ -210,6 +214,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Activity' => Kim\Activity\ActivityFacade::class, // "kim/activity": "^1.1" - For Onine Users Sessions
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class, //For Cart - Ribsncuts
     ],
 
 ];

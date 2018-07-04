@@ -3,7 +3,7 @@
 @section('content')
 
 {{-- Top Graphics --}}
-<div class="container block-transparent">
+<div class="container block-transparent mt-2">
     
     <div class="row">
 
@@ -23,7 +23,7 @@
 </div>
 
 {{-- Products --}}
-<div class="container block-white">
+<div class="container block-white mt-2">
 
     <div class="container">
         <h2 class="heading-all">Our Cuts</h2>

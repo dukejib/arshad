@@ -75,6 +75,7 @@
     {{-- Add Login Modal --}}
     @include('includes.login_modal')
 
+
 <!-- Scripts -->
 <script src="{{ asset('/js/jquery-3.3.1.min.js') }}"></script>
 <script src="{{ asset('/js/app.js') }}"></script>
@@ -82,7 +83,15 @@
 <script src="{{ asset('/js/ribsncuts.js') }}"></script>
 <script src="{{ asset('/js/owl.carousel.min.js') }}"></script> 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+<script>
+    @if(Session::has('success'))
+        toastr.success("{{ Session::get('success') }}",'Success');
+    @elseif(Session::has('info'))
+        toastr.info("{{ Session::get('info') }}",'Information');
+    @elseif(Session::has('failure'))
+        toastr.warning("{{ Session::get('failure') }}",'Failed');
+    @endif
+</script>
 <!-- Scripts -->
 @yield('scripts')
 

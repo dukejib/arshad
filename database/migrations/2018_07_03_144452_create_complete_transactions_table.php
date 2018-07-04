@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePendingOrdersTable extends Migration
+class CreateCompleteTransactionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePendingOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('pending_orders', function (Blueprint $table) {
+        Schema::create('complete_transactions', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreatePendingOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pending_orders');
+        Schema::dropIfExists('complete_transactions');
     }
 }

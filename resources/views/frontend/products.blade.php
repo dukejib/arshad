@@ -1,38 +1,33 @@
 @extends('layouts.frontend_master') 
 @section('content')
 
+<div class="container block-white mt-2">
 
-{{-- Beef/Mutton Picture Here--}}
-<div class="container block-transparent">
-    
-        <div class="row">
-    
-            <div class="col-lg-6 col-sm-12 animated fadeInLeft">
-                <h1 class="heading-block-transparent">The Meat Masters</h1>
-                <p class="text-justify">
-                    <p class="subheading">
+    <div class="container">
 
-                            Ribsncuts offers you a complete variety of Mutton cuts produced by quality bred goats treated with tenderness and a committed shariah compliant process. At Meat One, customers are always our first priority!</p>
-                </p>
-            </div>
+        <div class="row ">
     
-            <div class="col-lg-6 col-sm-12 animated fadeInRight">
+            <div class="col-lg-6 col-sm-12 mt-2 mb-2 order-1">
                 @if($category == 'Beef')
-                <img src="{{ asset('/images/cow-tray.jpg') }}" alt="" style="display:block;margin:auto;" width="400px">
+                <img src="{{ asset('/images/cow-cut-chart.png') }}" alt="" style="display:block;margin:auto;"  class="img-fluid">
                 @elseif ($category == 'Mutton')
-                <img src="{{ asset('/images/goat-tray.jpg') }}" alt="" style="display:block;margin:auto;" width="400px">
+                <img src="{{ asset('/images/goat-cut-chart.png') }}" alt="" style="display:block;margin:auto;"  class="img-fluid">
                 @endif
             </div>
     
+            <div class="col-lg-6 col-sm-12 mt-2 mb-2 order-0" >
+                @if($category == 'Beef')
+                <img src="{{ asset('/images/know-your-beef-cuts.png') }}" alt="" style="display:block;margin:auto;"  class="img-fluid">
+                @elseif ($category == 'Mutton')
+                <img src="{{ asset('/images/know-your-mutton-cuts.png') }}" alt="" style="display:block;margin:auto;"  class="img-fluid">
+                @endif
+            </div>
+
         </div>
-    
     </div>
 
-
-<div class="container block-white">
-
-    <div class="container">
-            <h2 class="heading-all">All Cuts</h2>
+    <div class="container animated fadeIn">
+           
 
         @foreach($products->chunk(3) as $productChunk)
         <div class="row">
@@ -44,8 +39,8 @@
                         <img class="card-img-top rounded-0" src="{{ asset('/images/products/' . $product->image) }}" alt="{{ $product->title }}">
                     </a>
                     <div class="card-body rounded-0">
-                        <h5>{{ $product->title }}</h5>
-                        <p class="text-danger"> Rs. {{ $product->price_per_kg }} / Kg</p>
+                        <h5 style="font-weight:900">{{ $product->title }}</h5>
+                        <p class="text-danger" style="font-weight:bold"> Rs. {{ $product->price_per_kg }} / Kg</p>
                         <p class="card-text">{!! str_limit($product->description,100) !!}</p>
 
                     </div>
@@ -62,4 +57,11 @@
     <br>
 
 </div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
 @endsection

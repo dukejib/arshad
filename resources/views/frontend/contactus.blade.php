@@ -2,11 +2,11 @@
 
 @section('content')
 
-<div class="container block-transparent">
+<div class="container block-transparent mt-2">
     
     <div class="row">
 
-        <div class="animated fadeInUp text-center">
+        <div class="animated fadeInUp">
             <h1 class="heading-all">Contact Us</h1>
             <p class="text-justify"><h3>We are here to listen to your complains, queries and most definitely your "feedback" ,since you are our #1 priority</h3></p>
         </div>
@@ -52,7 +52,11 @@
     </div>
 
 </div>
-    
+<br>
+<br>
+<br>
+<br>
+<br>
 
 @endsection
 
@@ -110,7 +114,7 @@
                     console.log(obj.error);
                     swal({
                         title:"Operation Failed",
-                        text:"Errors occured while sending your email. Please try again.",
+                        text:"Error sending your email. Please try again.",
                         icon:"warning"
                     });
                     // toastr.error(obj.error,'Operation Failed');

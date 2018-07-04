@@ -1,75 +1,13 @@
 /** Used by teaser.blade.php */
 $(document).ready(function(){
     
-    console.log('javascript started');
-
-    //Make Header taf full page
-    $(document).ready(function(){
-        $('.header').height($(window).height());
-        console.log('windows height changed');
-    });
-
     //Toastr.js Settings
     toastr.options = {
         "closeButton": true,
         "debug": false,
         "newestOnTop": false,
         "progressBar": true,
-        "positionClass": "toast-bottom-full-width",
-        // "positionClass": "toast-bottom-center",
-        "preventDuplicates": false,
-        "onclick": null,
-        "showDuration": "300",
-        "hideDuration": "1000",
-        "timeOut": "5000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-    };
-
-    //This removes the animated.class from the .tip to stop aniamtion
-    $('.tip').hover(function(){
-        $('#contactus').toggleClass('pulse');
-        console.log('tip animation toggled');
-    });
-
-    //Windows Scroll check for Animating the Contact Form when in range
-    $(window).scroll(function(){
-        //Get Y pixel place
-        var y = $(this).scrollTop();
-        // console.log("y is : " + y);
-            if(y >= 146){
-            showGetInTouch();
-        }
-    });
-
-    //If tip is clicked then go contact us form
-    function showGetInTouch(){
-        //Add animate class to other things.
-        $('#right-col').addClass('animated bounceInRight');
-        $('#left-col').addClass('animated bounceInLeft');
-        // console.log('showing GetInTouch');
-    }
-
-    //This is how we listen to animation end events in all browsers
-    $(function(){
-        var animationName = "animated bounce";
-        var animationEnd = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";
-        //$(#element).addClass(animationName).one(animationEnd,function(){
-        //    $(this).removeClass(animationName);
-        //});
-    });
-
-    //Uses Toastr https://github.com/CodeSeven/toastr
-    /** Toastr Options */
-    toastr.options = {
-        "closeButton": true,
-        "debug": false,
-        "newestOnTop": false,
-        "progressBar": true,
-        //"positionClass": "toast-bottom-full-width",
+        // "positionClass": "toast-bottom-full-width",
         "positionClass": "toast-bottom-center",
         "preventDuplicates": false,
         "onclick": null,
@@ -82,6 +20,15 @@ $(document).ready(function(){
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     };
+    
+    //This is how we listen to animation end events in all browsers
+    $(function(){
+        var animationName = "animated bounce";
+        var animationEnd = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";
+        //$(#element).addClass(animationName).one(animationEnd,function(){
+        //    $(this).removeClass(animationName);
+        //});
+    });
 
     /** Owl Carousel Slider Interval */
     $('.owl-carousel').owlCarousel({
@@ -96,17 +43,119 @@ $(document).ready(function(){
                 items:1
             },
             400:{
-                items:1
+                items:2
             },
             600:{
-                items:3
+                items:2
             },
             800:{
-                items:2
+                items:3
             },
             1000:{
                 items:3
             }
         }
     });
+
+    //Login Form Submit Starts Here
+    $('#login_form').submit(function(e)
+    {
+        e.preventDefault(); //Stop Submission
+        
+        $email = $('#email').val();
+        $password = $('#password').val();
+        $login_url = $('#login_url').val();
+        console.log($login_url);
+        $.ajax({
+            type:"POST",
+            url: $login_url,
+            dataType: "json",
+            data: {email:$email,password:$password,'_token':$('meta[name=csrf-token]').attr('content')}, //get Csrf-Token
+            success:function(res,status){
+                // console.log('Resp : ' + res.statusText + ' Code : ' + res.status + ' Status : ' + status);
+                $('#login_form')[0].reset();
+                //WE are all done
+                $('#loginModal').modal('hide');
+                //Redirect to Profile
+                window.location.replace(res);
+                },
+            error:function(res,status){
+                // console.log('Resp : ' + res.statusText + ' Code : ' + res.status + ' Status : ' + status);
+                $('#login_errors').html('Unable to log you in');
+                // console.log(obj.statusText + ' ' +  obj.status);
+                },
+            complete:function(){
+
+            }
+        })
+    });
+    //Login Form Submit End Here
+
+    $('#registerUser').click(function(){
+        $('#loginModal').modal('hide');
+        //Show Registration Modal
+        $register_url = $('#register_url').val();
+        // console.log($register_url);
+        $.ajax({
+            type: "GET",
+            url: $register_url,
+            data: "data",
+            dataType: "json",
+            success: function (response) {
+                // console.log(response);
+                window.location.replace(response);
+            },
+            error:function(response){
+                // console.log(response);
+            }
+        });
+    });
+
+
+    $('#forgotPassword').click(function(){
+        $('#loginModal').modal('hide');
+        $forgotpass_url = $('#passforgot_url').val();
+        console.log($forgotpass_url);
+        $.ajax({
+            type: "GET",
+            url: $forgotpass_url,
+            data: "data",
+            dataType: "json",
+            success: function (response) {
+                // console.log(response);
+                window.location.replace(response);
+            },
+            error:function(response){
+                // console.log(response);
+            }
+        });
+
+    });
+
+
+    // $('#facebookLogin').click(function(){
+        
+    //     $('#loginModal').modal('hide');
+    //     $facebook_url = $('#facebook_url').val();
+    //     console.log($facebook_url);
+    //     $.ajax({
+    //         type: "GET",
+    //         url: $facebook_url,
+    //         data: "data",
+    //         dataType: "json",
+    //         success: function (response) {
+    //             console.log(response);
+    //             // window.location.replace(response);
+    //         },
+    //         error:function(response){
+    //             // console.log(response);
+    //         }
+    //     });
+    // });
+
+    //Clear the Modals
+    $('#loginModal').on('hide.bs.modal',function(){
+        $(this).find('#login_form')[0].reset();
+    });
+
 });

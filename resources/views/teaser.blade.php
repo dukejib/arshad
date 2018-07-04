@@ -117,8 +117,7 @@
     <!-- Scripts -->
     <script src="{{ asset('/js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('/js/app.js') }}"></script>
-    <script src="{{ asset('/js/toastr.js') }}"></script>
-    <script src="{{ asset('/js/ribsncuts.js') }}"></script>
+    <script src="{{ asset('/js/ribsncuts-old.js') }}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Scripts -->
     <script>
@@ -174,7 +173,7 @@
                     console.log(obj.error);
                     swal({
                         title:"Operation Failed",
-                        text:"Errors occured while sending your email. Please try again.",
+                        text:"Error sending email. Please try again.",
                         icon:"warning"
                     });
                     // toastr.error(obj.error,'Operation Failed');

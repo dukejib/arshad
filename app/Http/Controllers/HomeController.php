@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use auth;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\User;
-use Illuminate\Support\Facades\Auth;
+use Mockery\CountValidator\Exception;
+use App\Order;
+
 
 class HomeController extends Controller
 {
@@ -18,15 +20,21 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    /**
+       /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $user = Auth::user();
-        return view('frontend.profile')
-        ->with('user',$user);
+        return view('home');
     }
+
+    public function profile()
+    {
+        return view('profile')
+        ->with('orders',Order::where('user_id',auth()->id()))
+        ->with('user',auth()->user());
+    }
+
 }

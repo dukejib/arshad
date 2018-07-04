@@ -16,6 +16,10 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned(); //Only Logged in users can send us the order
+            $table->string('subtotal');
+            $table->string('grandtotal');
+            $table->string('status')->default('Pending');
+            $table->string('city'); //Which City? Multan / Faisalabad / Karachi 
             $table->timestamps();
         });
     }

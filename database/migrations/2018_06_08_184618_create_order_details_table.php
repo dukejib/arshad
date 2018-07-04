@@ -17,8 +17,9 @@ class CreateOrderDetailsTable extends Migration
             $table->increments('id');
             $table->integer('order_id')->unsigned();
             $table->integer('product_id')->unsigned();
-            $table->float('total',8,2); //AMount of Product - without tax or anything
-            $table->integer('kg');  //# of KG Selected
+            $table->string('product_name');
+            $table->string('product_qty'); //How Many KG?
+            $table->float('product_price',8,2); //AMount of Product - without tax or anything
             $table->timestamps();
         });
     }

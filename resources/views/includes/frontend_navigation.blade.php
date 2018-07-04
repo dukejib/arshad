@@ -1,4 +1,4 @@
-<div class="container animated fadeInDown">
+<div class="container">
     <div class="row">
         
         {{-- Navigation Bar --}}
@@ -27,20 +27,23 @@
             <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
                 <ul class="navbar-nav ml-auto nav-fill w-100">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-shopping-bag"></i> Cart</a>
+                        <a class="nav-link" href="{{ route('cart')}}"><i class="fa fa-shopping-bag"></i> Cart <span class="badge badge-danger">{{ Session::has('cart')? Cart::count() : '' }}</span></a>
                     </li>
                     @guest
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal"><i class="fa fa-sign-in"></i> Login
+                            {{-- <a class="nav-link" href="{{ route('login') }}"><i class="fa fa-sign-in"></i> Login --}}
                         </a>
                     </li>
                     @else
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fa fa-user"></i> Logged-in
+                          <i class="fa fa-home"></i> Logged-in
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
+                          <a class="dropdown-item" href="{{ route('profile') }}">
+                            <i class="fa fa-user"></i>
+                            Profile</a>
                               <div class="dropdown-divider"></div>
                           <a class="dropdown-item" href="{{ route('logout')}}" onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">

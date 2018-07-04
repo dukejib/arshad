@@ -15,6 +15,9 @@ class CreateCompletedOrdersTable extends Migration
     {
         Schema::create('completed_orders', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('order_id')->unsigned();
+            $table->string('order_total');
+            $table->string('payment_mode')->default('COD'); //COD = Cash on Delivery
             $table->timestamps();
         });
     }
