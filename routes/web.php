@@ -19,40 +19,41 @@ Route::get('/', function () {
     // return view('welcome');  
 });
 
-
-
-// Route::get('event',function(){
-
-//     $contact = array(
-//         'username' => 'Ali',
-//         'email' => 'some@m.com',
-//         'number' => '03434',
-//         'reason' => 'feedback',
-//         'comment' => 'ccc'
-//     );
-
-//     event(new ContactMadeEvent($contact) );
-// });
-
-
 /** All Frontend Open Routes */
 //===========================//
 Route::get('/landing','FrontEndController@index')->name('home');
 Route::get('/contactus','FrontEndController@contactus')->name('contactus');
 Route::post('/contactus','FrontEndController@post_contactus')->name('contactus.post');
+Route::get('/terms','FrontEndController@terms')->name('terms');
+Route::get('/privacypolicy','FrontEndController@privacypolicy')->name('privacypolicy');
+// Route::get('/faqs','FrontEndController@faqs')->name('faqs');
 Route::get('/product/{slug}','FrontEndController@get_product')->name('view.product');
 Route::get('/products/{slug}','FrontEndController@get_products')->name('view.products');
-Route::get('/user/register','FrontEndController@user_register')->name('user.register');
-Route::get('/user/passforgot','FrontEndController@user_passforgot')->name('user.passforgot');
 
-Route::post('/user/login','Auth\LoginController@user_login')->name('user.login');
-//Facebook Socialite Login/Callback
+
+/** Login/Register Routes  */
+//==========================/
+Route::post('/user/login','UserController@user_login')->name('user.login'); //Jquery for Login
+Route::get('/user/register','UserController@showRegisterForm')->name('user.register');
+Route::post('/user/register','UserController@register')->name('user.register');
+// Route::get('/user/passforgot','FrontEndController@user_passforgot')->name('user.passforgot');
+
+/** Socail Media Login */
+//=====================//
 Route::get('login/facebook', 'Auth\LoginController@redirectToFacebookProvider')->name('facebook.login');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleFacebookProviderCallback')->name('facebook.callback');
 Route::get('login/google', 'Auth\LoginController@redirectToGoogleProvider')->name('google.login');
 Route::get('login/google/callback', 'Auth\LoginController@handleGoogleProviderCallback')->name('google.callback');
 
+/** All Frontend Auth Routes */
+//============================/
+Route::middleware('auth')->group(function(){
 
+    Route::get('/profile','HomeController@profile')->name('profile');
+    Route::post('/profile/address','HomeController@address_update')->name('profile.address');
+    Route::post('/user/logout','HomeController@logout')->name('logout');
+
+});
 
 /** Cart Related Routes */
 //======================//
@@ -60,13 +61,13 @@ Route::get('/cart','CartController@cart')->name('cart'); //Show Cart
 Route::get('/cart/add/{id}/{qty}','CartController@cartAdd')->name('cart.add');
 Route::get('/cart/remove/{id}','CartController@cartRemove')->name('cart.remove');
 Route::get('/cart/clear','CartController@clear_cart')->name('cart.clear'); //Clear Cart
-Route::get('/cart/decrease_qty/{id}{qty}','CartController@decrease_item')->name('cart.decrease');
-Route::get('/cart/increase_qty/{id}{qty}','CartController@increase_item')->name('cart.increase');
-Route::get('/cart/checkout','CartController@cartCheckout')->name('cart.checkout');
-
+Route::get('/cart/decrease_qty/{id}/{qty}','CartController@decrease_item')->name('cart.decrease');
+Route::get('/cart/increase_qty/{id}/{qty}','CartController@increase_item')->name('cart.increase');
+Route::get('/cart/checkout','CartController@showCartCheckout')->name('cart.checkout');
+Route::get('/cart/checkout/proceed','CartController@cartProceed')->name('cart.proceed');
+Route::get('/cart/checkout/confirm','CartController@cartCheckoutConfirm')->name('cart.confirm');
 /** Auto Generated Auth Routes */
-Auth::routes();
+// Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home'); 
 /** Authenticted Routes */
 //======================//
-Route::get('/profile','HomeController@profile')->name('profile');

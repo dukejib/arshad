@@ -38,13 +38,13 @@ return [
     'facebook' => [
         'client_id' => env('FACEBOOK_CLIENT_ID'),         // Your FACEBOOK Client ID
         'client_secret' => env('FACEBOOK_CLIENT_SECRET'), // Your FACEBOOK Client Secret
-        'redirect' => 'http://localhost/ribsncuts/public/login/facebook/callback',
+        'redirect' => env('FACEBOOK_CALLBACK'),
     ],
 
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),         // Your GOOGLE Client ID
         'client_secret' => env('GOOGLE_CLIENT_SECRET'), // Your GOOGLE Client Secret
-        'redirect' => 'http://localhost/ribsncuts/public/login/google/callback',
+        'redirect' => env('GOOGLE_CALLBACK'),
     ],
 
 ];

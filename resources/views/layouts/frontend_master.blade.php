@@ -24,18 +24,6 @@
     <!-- External Style Sheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css"/>
-    
-
-    <!-- Google Fonts -->
-    {{-- <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">  --}}
-    {{-- <link href="https://fonts.googleapis.com/css?family=Six+Caps" rel="stylesheet">  --}}
-    {{-- <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"> --}}
-    {{-- <link href="https://fonts.googleapis.com/css?family=Dorsa" rel="stylesheet">  --}}
-    {{-- <link href="https://fonts.googleapis.com/css?family=Palanquin" rel="stylesheet">  --}}
-    {{-- <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">  --}}
-    {{-- <link href="https://fonts.googleapis.com/css?family=Meera+Inimai" rel="stylesheet">  --}}
-    {{-- <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">  --}}
-
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('/images/icons/apple-icon-57x57.png') }}">
@@ -64,7 +52,7 @@
 
 <body>
 
-    <div id="hero">
+    <div class="hero">
         {{-- FrontEnd Navigation --}}
         @include('includes.frontend_navigation')
         {{-- FrontEnd Content --}}
@@ -82,16 +70,34 @@
 <script src="{{ asset('/js/toastr.js') }}"></script>
 <script src="{{ asset('/js/ribsncuts.js') }}"></script>
 <script src="{{ asset('/js/owl.carousel.min.js') }}"></script> 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <script>
     @if(Session::has('success'))
         toastr.success("{{ Session::get('success') }}",'Success');
     @elseif(Session::has('info'))
         toastr.info("{{ Session::get('info') }}",'Information');
-    @elseif(Session::has('failure'))
-        toastr.warning("{{ Session::get('failure') }}",'Failed');
+    @elseif(Session::has('error'))
+        toastr.error("{{ Session::get('error') }}",'Failed');
     @endif
 </script>
+<script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '237986806787117',
+        xfbml      : true,
+        version    : 'v3.0'
+      });
+      FB.AppEvents.logPageView();
+    };
+  
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
 <!-- Scripts -->
 @yield('scripts')
 

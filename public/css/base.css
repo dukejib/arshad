@@ -1,21 +1,12 @@
-
-/* Background */
-/* body {
-    height:100%;
+.hero {
     background-image: url("../images/bg-2.jpg");
     background-repeat: no-repeat;
-    background-size: auto;
-    z-index: -1000;
-    background-color: black;
-} */
-
-#hero {
-    background-image: url("../images/bg-2.jpg");
-    background-repeat: no-repeat;
+    background-color:white;
 }
 
-body{
-    background-color:#fff;
+.about-product li::before {
+    content: url("../images/16px-red-checkmark.png");
+    padding-right:10px;
 }
 /* 
 .heading-all::before{

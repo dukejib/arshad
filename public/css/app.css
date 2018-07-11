@@ -1,6 +1,45 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@import url(https://fonts.googleapis.com/css?family=Six+Caps);@import url(https://fonts.googleapis.com/css?family=Oxygen);@import url(https://fonts.googleapis.com/css?family=Comfortaa);/* W3C */
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600,900);@import url(https://fonts.googleapis.com/css?family=Six+Caps);@import url(https://fonts.googleapis.com/css?family=Oxygen);@import url(https://fonts.googleapis.com/css?family=Comfortaa);/* W3C */
 
 /** Headings */
+
+body {
+  background-color: white;
+}
+
+html {
+  font-family: 'Six Caps', sans-serif;
+  background-color: white;
+}
+
+footer {
+  padding: 35px 20px;
+  line-height: 0px;
+  background-color: black;
+  color: white;
+}
+
+.terms,
+.privacy {
+  margin: 20px 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: .95rem;
+}
+
+.terms p,
+.privacy p {
+  margin: 5px 10px;
+}
+
+.quicklinks ul {
+  list-style: none;
+  font-size: 1.05rem;
+  margin-top: 15px;
+}
+
+.quicklinks ul li {
+  border-top: 1px solid gray;
+}
 
 .heading-all {
   font-family: 'Oxygen', sans-serif;
@@ -8,10 +47,10 @@
   padding: 5px;
 }
 
-@media (max-width: 416px) {
+@media (max-width: 25rem) {
   .heading-all {
     font-weight: 600;
-    font-size: 1.25rem;
+    font-size: 1.55rem;
   }
 }
 
@@ -20,7 +59,7 @@
   font-weight: 900;
 }
 
-@media (max-width: 416px) {
+@media (max-width: 25rem) {
   .heading-block-transparent {
     font-weight: 600;
     font-size: 1.75rem;
@@ -29,17 +68,17 @@
 
 .subheading {
   font-size: 1.75rem;
-  font-weight: 500;
+  font-weight: 400;
 }
 
-@media (max-width: 416px) {
+@media (max-width: 25rem) {
   .subheading {
-    font-weight: 500;
+    font-weight: 400;
     font-size: 1.15rem;
   }
 }
 
-@media (max-width: 416px) {
+@media (max-width: 25rem) {
   .make-me-block {
     width: 100%;
     display: block;
@@ -47,8 +86,10 @@
   }
 }
 
-html {
-  font-family: 'Six Caps', sans-serif;
+.nav .nav-link {
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #fff;
 }
 
 /* Make Navbar bootstrap 4.0 transparent */
@@ -58,13 +99,13 @@ html {
   background: none !important;
 }
 
-@media (max-width: 412px) {
+@media (max-width: 25rem) {
   .navbar {
-    background: black !important;
+    background: rgba(0, 0, 0, 0.5) !important;
   }
 }
 
-@media (max-width: 412px) {
+@media (max-width: 25rem) {
   .navbar .navbar-brand {
     float: left;
   }
@@ -78,7 +119,7 @@ html {
 
 .navbar .nav-link {
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 600;
   color: #fff;
 }
 
@@ -92,11 +133,10 @@ html {
   }
 }
 
-@media (max-width: 412px) {
+@media (max-width: 25rem) {
   .navbar .nav-item .nav-link {
     font-weight: normal;
     color: #fff !important;
-    background: #000000;
     text-align: left;
   }
 }
@@ -104,7 +144,7 @@ html {
 .block-transparent {
   padding: 35px 20px;
   color: white;
-  font-weight: bold;
+  font-weight: 900;
   /* border: 1px solid; */
 }
 
@@ -122,7 +162,7 @@ html {
 /* For Google Map */
 
 .map-white {
-  padding-top: 20px 20px;
+  padding: 20px 20px;
   height: 500px;
   background-color: white;
 }
@@ -134,15 +174,6 @@ html {
   /* The height is 400 pixels */
   width: 100%;
   /* The width is the width of the web page */
-}
-
-footer {
-  padding-left: 30px;
-  padding-right: 30px;
-  line-height: 100px;
-  margin-top: 50px;
-  background-color: black;
-  color: white;
 }
 
 .vertical-divider {
@@ -215,6 +246,33 @@ footer {
 .fa-pinterest-square:hover,
 .fa-google-plus-square:hover {
   color: #dc3545;
+}
+
+.nav-tabs {
+  font-weight: 600;
+}
+
+.nav-tabs .nav-link.active {
+  color: #fff !important;
+  background-color: #dc3545 !important;
+  border-color: #dee2e6 #dee2e6 #f5f8fa;
+}
+
+.nav-tabs .nav-link {
+  text-transform: uppercase;
+  font-weight: 300;
+  color: #dc3545;
+}
+
+.about-product ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  font-size: 1.25rem;
+}
+
+.about-product li {
+  padding: 20px 0;
 }
 
 /*!

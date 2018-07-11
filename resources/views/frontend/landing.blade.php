@@ -25,27 +25,24 @@
 {{-- Products --}}
 <div class="container block-white mt-2">
 
-    <div class="container">
-        <h2 class="heading-all">Our Cuts</h2>
+    <h2 class="heading-all">Our Cuts</h2>
 
-        <div class="owl-carousel owl-theme animated fadeInUp">
+    <div class="owl-carousel owl-theme animated fadeInUp">
 
-            @foreach($products as $product) 
-            <!-- class='item' is required by owl-carousel >> check my.js -->
-            <div class="card">
-                <h5 class="card-header text-center bg-danger text-white rounded-0">{{ $product->title }}</h5>
-                <a href="{{ route('view.product',['slug' => $product->slug ]) }}">
-                    <img class="card-img-top rounded-0" src="{{ asset('/images/products/' . $product->image) }}" alt="{{ $product->title }}">
-                </a>
-                <div class="card-body rounded-0">
-                  <p class="card-text">{!! str_limit($product->description,100) !!}</p>
-                  <a href="{{ route('view.product',['slug' => $product->slug ]) }}" class="btn btn-danger rounded-0">Read More!</a>
-                </div>
+        @foreach($products as $product) 
+        <!-- class='item' is required by owl-carousel >> check my.js -->
+        <div class="card">
+            <h5 class="card-header text-center bg-danger text-white rounded-0">{{ $product->title }}</h5>
+            <a href="{{ route('view.product',['slug' => $product->slug ]) }}">
+                <img class="card-img-top rounded-0" src="{{ asset('/images/products/' . $product->image) }}" alt="{{ $product->title }}">
+            </a>
+            <div class="card-body rounded-0">
+              <p class="card-text">{!! str_limit($product->description,100) !!}</p>
+              <a href="{{ route('view.product',['slug' => $product->slug ]) }}" class="btn btn-danger rounded-0">Read More!</a>
             </div>
-            @endforeach
-    
-    
         </div>
+        @endforeach
+
 
     </div>
 
@@ -57,26 +54,16 @@
 {{-- Delivery --}}
 <div class="block-black">
     <div class="container">
-        <h2 class="heading-all">About Our Products</h2>
+        <h2 class="heading-all">Product Quality & Service</h2>
     
         <div class="row">
-            <div class="col-lg-6 col-sm-12">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <ul>
-                            <li># 1</li>
-                            <li># 2</li>
-                            <li># 3</li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6">
-                        <ul>
-                            <li># 1</li>
-                            <li># 2</li>
-                            <li># 3</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="col-lg-6 col-sm-12 about-product">
+                <ul>
+                    <li>Bacteria Free</li>
+                    <li>Grass Fed</li>
+                    <li>Temperature Controlled</li>
+                    <li>Antibiotic Free</li>
+                </ul>
                 <br>
             </div>
             <div class="col-lg-6 col-sm-12">
@@ -90,7 +77,7 @@
 {{-- Map --}}
 <div class="map-white">
     <div class="container">
-        <h2 class="heading-all">Visit our Outlet</h2>
+        <h2 class="heading-all">Visit our Outlet in Multan</h2>
         
         {{-- Map --}}
         <div id="map">
@@ -102,21 +89,21 @@
 @endsection
 
 @section('scripts')
-{{-- <script async defer
+<script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg6Ly4QKp1D_21tvBW6DZU40CFcGe4f6M&callback=initMap">
-</script> --}}
+</script>
 
 <script>
 // Initialize and add the map
 function initMap() {
     console.log("in map api");
-  // The location of Uluru
-  var uluru = {lat: 30.157458, lng: 71.524915};
-  // The map, centered at Uluru
+  // The location of multan
+  var multan = {lat: 30.228450, lng: 71.479049};
+  // The map, centered at multan
   var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 12, center: uluru});
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: uluru, map: map});
+      document.getElementById('map'), {zoom: 16, center: multan});
+  // The marker, positioned at multan
+  var marker = new google.maps.Marker({position: multan, map: map});
 }
 </script>
 @endsection

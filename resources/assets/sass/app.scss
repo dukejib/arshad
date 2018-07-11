@@ -1,24 +1,65 @@
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600,900");
 @import url('https://fonts.googleapis.com/css?family=Six+Caps');
 @import url('https://fonts.googleapis.com/css?family=Oxygen');
 @import url('https://fonts.googleapis.com/css?family=Comfortaa');
 
 $background-color: linear-gradient(to right, black 0%,black 50%,#000000 70%,var(--main-red-color) 30%, var(--main-red-color) 100%); /* W3C */
-$smallscreensize:416px; //Change this to effect it every where
+$smallscreensize:25rem; //Change this to effect it every where
 $rnc-red:#dc3545;
 /** Headings */
 //$font-size-base:1rem !default; // Assumes the browser default, typically `16px`
 //h1 * font-size-base * 2.5
+body{
+    background-color:white;
+}
+
+html{
+    font-family: 'Six Caps', sans-serif;
+    background-color:white;
+}
+
+// The Footer
+footer {
+    padding:35px 20px;
+    line-height: 0px;
+    background-color:black;
+    color:white;
+}
+
+// For Terms & Privacy Policy 
+.terms, .privacy {
+    margin:20px 10px;
+    padding-left:10px;
+    padding-right:10px;
+    font-size:.95rem;
+    p{
+        margin:5px 10px;
+    }
+}
+// Footer UL LI
+.quicklinks{
+
+    ul{
+        list-style: none;
+        font-size:1.05rem;
+        margin-top:15px;
+
+        li {
+            border-top:1px solid gray;
+        }
+    }
+}
+
 .heading-all{
     font-family: 'Oxygen', sans-serif;
     font-weight: 900;
     padding:5px;
 
     @media(max-width:$smallscreensize){
-        font-weight: 600;
-        font-size: 1rem * 1.25;
+        font-weight:  600;
+        font-size: 1rem * 1.55;
     }
 }
 
@@ -34,10 +75,10 @@ $rnc-red:#dc3545;
 
 .subheading {
     font-size: 1rem * 1.75;
-    font-weight: 500;
+    font-weight: 400;
 
     @media (max-width:$smallscreensize){
-        font-weight: 500;
+        font-weight: 400;
         font-size: 1rem * 1.15;
     }
 }
@@ -50,20 +91,23 @@ $rnc-red:#dc3545;
     }
 }
 
-html{
-    font-family: 'Six Caps', sans-serif;
+.nav {
+    .nav-link{
+        text-transform: uppercase;
+        font-weight: 600;
+        color:#fff;
+    }
 }
-
 /* Make Navbar bootstrap 4.0 transparent */
 .navbar {
     width:100%;
     background: none !important;
 
-    @media(max-width:412px){
-        background:black !important;
+    @media(max-width:$smallscreensize){
+        background:rgba(0,0,0,.5) !important;
     }
     .navbar-brand{
-        @media(max-width:412px){
+        @media(max-width:$smallscreensize){
            float:left;
         }
     }
@@ -75,7 +119,7 @@ html{
 
     .nav-link{
         text-transform: uppercase;
-        font-weight: bold;
+        font-weight: 600;
         color:#fff;
     }
 
@@ -86,21 +130,22 @@ html{
             padding:0;
         }
         .nav-link {
-            @media(max-width:412px){
+            @media(max-width:$smallscreensize){
                 font-weight:normal;
                 color:#fff !important;
-                background: #000000;
+                // background: #000000;
                 text-align: left;
             }
 
         }
+
     }
 }
 
 .block-transparent{
     padding:35px 20px;
     color:white;
-    font-weight: bold;
+    font-weight: 900;
     /* border: 1px solid; */
 }
 
@@ -116,7 +161,7 @@ html{
 }
 /* For Google Map */
 .map-white {
-    padding-top:20px 20px;
+    padding:20px 20px;
     height:500px;
     background-color: white;
 }
@@ -124,16 +169,6 @@ html{
 #map {
     height: 400px;  /* The height is 400 pixels */
     width: 100%;  /* The width is the width of the web page */
-}
-
-// The Footer
-footer {
-    padding-left:30px;
-    padding-right:30px;
-    line-height: 100px;
-    margin-top:50px;
-    background-color:black;
-    color:white;
 }
 
 // Vertical Divider for Login Modal
@@ -196,6 +231,34 @@ footer {
 color:$rnc-red;
 }
 
+.nav-tabs {
+    font-weight: 600;
+}
+
+.nav-tabs .nav-link.active, {
+    color: #fff !important;
+    background-color: $rnc-red !important;
+    border-color: #dee2e6 #dee2e6 #f5f8fa;
+}
+
+.nav-tabs .nav-link {
+    text-transform: uppercase;
+    font-weight: 300;
+    color: $rnc-red;
+}
+
+
+.about-product ul{
+    list-style: none;
+    padding:0;
+    margin:20px 0;
+    font-size:1.25rem;
+}
+
+.about-product li {
+    // border-top:1px solid rgba(107, 105, 105,.25);
+    padding:20px 0;
+}
 
 // Variables
 @import "variables";

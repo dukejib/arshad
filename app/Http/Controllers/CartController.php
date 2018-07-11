@@ -52,7 +52,8 @@ class CartController extends Controller
         return redirect()->back();
     }
 
-    public function clear_cart(){
+    public function clear_cart()
+    {
         if(Session::has('cart')){
             Cart::destroy();
             Session::forget('cart');
@@ -75,8 +76,15 @@ class CartController extends Controller
         return redirect()->back();
     }
 
-    public function cartCheckout()
+    public function showCartCheckout()
     {
-        return 'Cart Checkout Route';
+        return response()->json(route('cart.proceed'));
+    }
+
+    public function cartProceed(){
+        $user = Auth::user();
+        return view('frontend.cartcheckout')
+        ->with('user',$user);
+        
     }
 }

@@ -1,7 +1,7 @@
 @component('mail::message')
 Welcome to RibsnCuts, {{ $user->name }}
 
-We hope you have a greate stay here with us
+We hope you have a great stay here with us
 
 @component('mail::button', ['url' => ''])
 Welcome!

@@ -6,7 +6,7 @@
     
     <div class="row">
 
-        <div class="animated fadeInUp">
+        <div class="animated fadeInLeft">
             <h1 class="heading-all">{{$user->name}}</h1>
             <p class="text-justify"><h3>Welcome to your Profile</h3></p>
         </div>
@@ -24,113 +24,46 @@
         {{-- Tabl Listing --}}
         <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Profile Information</a>
+                <a class="nav-link active" id="address-tab" data-toggle="tab" href="#address" role="tab" aria-controls="address" aria-selected="true">address Information</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="delivery-tab" data-toggle="tab" href="#delivery" role="tab" aria-controls="delivery" aria-selected="false">Delivery Address</a>
-            </li>
+            @if($orders->count()>0)
             <li class="nav-item">
                 <a class="nav-link" id="orders-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="false">Orders Information</a>
             </li>
+            @endif
         </ul>
 
         {{-- Tabs --}}
         <div class="tab-content" id="myTabContent">
 
-            <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                
-                {{-- Profile Info Basic --}}
+            {{-- Address --}}
+            <div class="tab-pane fade show active" id="address" role="tabpanel" aria-labelledby="address-tab">
                 <div class="row justify-content-center mt-5">
                     <div class="col-md-8">
 
-                        <div class="card border-danger">
+                        <div class="card border-dark">
 
-                            <div class="card-header bg-danger text-white">
-                                <h4 class="card-title"><i class="fa fa-user"></i> Basic Information</h4>
-                                <h6 class="card-subtitle muted">Change your username and email address</h6>   
+                            <div class="card-header text-white bg-dark">
+                                <h4 class="card-title"><i class="fa fa-home"></i> Delivery Address</h4>
+                                <h6 class="card-subtitle muted">Change/Update your address for order delivery</h6>
                             </div>
 
-                            <form action="#" method="post">
+                            @include('includes.errors')
+                            <form action="{{ route('profile.address') }}" method="post">
                                 @csrf
                                 <div class="card-body">
 
                                     <div class="form-group">
-                                        <label for="name">Username</label>
-                                        <input type="text" name="name" id="name" class="form-control" value="{{ $user->name }}" required>
+                                        <label for="username">Username</label>
+                                        <input type="text" name="username" id="username" class="form-control" value="{{ $user->name }}" disabled>
                                     </div>
                     
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="email" name="email" id="email" class="form-control" value="{{ $user->email }}" required>
+                                        <input type="email" name="email" id="email" class="form-control" value="{{ $user->email }}" disabled>
                                     </div>
                     
                                     <div class="form-group">
-                                        <input type="submit" value="Update Basic Information" class="form-control btn btn-success rounded-0">
-                                    </div>
-                                </div>
-                            </form>
-
-                        </div>
-
-                    </div>
-                </div>
-
-                {{-- Password --}}
-                <div class="row justify-content-center mt-5">
-                    <div class="col-md-8">
-
-                        <div class="card border-danger">
-
-                            <div class="card-header text-white bg-danger">
-                                <h4 class="card-title"><i class="fa fa-key"></i> Password</h4>
-                                <h6 class="card-subtitle muted">Change your password</h6>
-                            </div>
-
-                            <form action="#" method="post">
-                                @csrf
-                                <div class="card-body">
-
-                                    <div class="form-group">
-                                        <label for="password">Password</label>
-                                        <input type="text" name="password" id="password" class="form-control" required>
-                                    </div>
-                                    
-
-                                    <div class="form-group">
-                                        <label for="password-confirm">Confirm Password</label>
-                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="submit" value="Change Password" class="form-control btn btn-success">
-                                    </div>
-                                </div>
-                            </form>
-
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-            
-            <div class="tab-pane fade" id="delivery" role="tabpanel" aria-labelledby="delivery-tab">
-                   {{-- delivery --}}
-                   <div class="row justify-content-center mt-5">
-                        <div class="col-md-8">
-    
-                            <div class="card border-danger">
-    
-                                <div class="card-header text-white bg-danger">
-                                    <h4 class="card-title"><i class="fa fa-home"></i> Delivery Address</h4>
-                                    <h6 class="card-subtitle muted">Change/Update your address for order delivery</h6>
-                                </div>
-    
-                                <form action="#" method="post">
-                                    @csrf
-                                    <div class="card-body">
-    
-                                        <div class="form-group">
                                             <label for="contact">Contact Person
                                                 <br>
                                                 <small>If you aren&apos;t available to receive the delivery</small>
@@ -158,21 +91,23 @@
                                         <div class="form-group">
                                             <input type="submit" value="Update Delivery Address" class="form-control btn btn-success rounded-0">
                                         </div>
-                                    </div>
-                                </form>
-    
-                            </div>
-    
+                                </div>
+                            </form>
+
                         </div>
+
                     </div>
+                </div>
+
+
             </div>
-            
+     
+            {{-- Orders --}}
+            @if($orders->count()>0)
             <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
-            
-                {{-- Orders --}}
                 <div class="table-responsive-sm table-responsive-md">
                     
-                    @if($orders->count()>0)
+                   
                     <table class="table table-bordered" style="height: 100px">
                         <thead class="thead-dark text-white text-uppercase text-center">
                             <tr>
@@ -184,7 +119,7 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                       
+                        @if($orders->count()>0)
                             @foreach($orders as $order)
                                 <tbody> 
                                     <tr>
@@ -198,15 +133,13 @@
                                 </tbody>
 
                             @endforeach
-            
+                        @endif
                     </table>
-                    @else
-                    <h3 class="heading-all">No Orders Yet</h3>
-                    @endif
+                   
                 </div>
                     
             </div>
-        
+            @endif
         </div>
     
     </div>

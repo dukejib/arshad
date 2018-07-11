@@ -6,16 +6,15 @@
      
     <div class="row">
 
-        <div class="animated fadeInUp">
+        <div class="animated fadeInLeft">
             <h1 class="heading-all">Shopping Cart</h1>
             <p class="text-justify"><h3>View your selected items, alter item quantity as per requirements</h3></p>
         </div>
     </div>
 
 </div>
-    
 
-<div class="container block-white mt-2">
+<div class="container block-white">
 
     <h2 class="heading-all">Shopping Cart</h2>
 
@@ -60,7 +59,7 @@
                 @endforeach
                 <tfoot class="bg-dark text-white">
                         <tr>
-                            <td colspan="5" class="text-right text-white" style="font-size:20px;font-weight:bold">Subtotal : RS {{ Cart::subtotal() }}</td>
+                            <td colspan="5" class="text-right text-white" style="font-size:20px">Subtotal : RS {{ Cart::subtotal() }}</td>
                         </tr>
                 </tfoot>
     
@@ -119,7 +118,10 @@
                             <a href="{{route('home') }}" class="btn btn-success rounded-0 btn-block">Continue Shopping</a>
                         </div>
                         <div class="col">
-                            <a href="{{route('cart.checkout') }}" class="btn btn-danger rounded-0 btn-block">Checkout</a>
+                            @if(Cart::content()->count()> 0)
+                                <button class="btn btn-danger rounded-0 btn-block" id="checkout">Checkout</button>
+                                {{-- <a href="" class="btn btn-danger rounded-0 btn-block" >Checkout</a> --}}
+                            @endif
                         </div>
                     </div>
     
@@ -141,4 +143,54 @@
 <br>
 <br>
 
+@endsection
+
+@section('scripts')
+<script>
+$(document).ready(function(){
+
+    var route = '{{route('cart.checkout') }}';
+    var authenticated = '{{ Auth::user() }}';
+
+    // if(!authenticated){
+    //     console.log('not authenticated');
+    // }else{
+    //     console.log('authenticated')
+    // }
+
+    $('#checkout').click(function(){
+        // preventDefault();
+        
+        if(!authenticated){
+            $('#loginModal').modal('show');
+        };
+
+        if(authenticated){
+            $.ajax({
+                type: "GET",
+                url: route,
+                // data: "data",
+                dataType: "json",
+                success:function(res,status){
+                    console.log('Resp : ' + res.statusText + ' Code : ' + res.status + ' Status : ' + status);
+                    $('#login_form')[0].reset();
+                    //WE are all done
+                    $('#loginModal').modal('hide');
+                    //Redirect to Profile
+                    window.location.replace(res);
+                },
+                error:function(res,status){
+                    console.log('Resp : ' + res.statusText + ' Code : ' + res.status + ' Status : ' + status);
+                    $('#login_errors').html('Unable to log you in');
+                    // console.log(obj.statusText + ' ' +  obj.status);
+                    },
+                complete:function(){
+
+                }
+            });
+        }
+    });
+   
+});
+</script>
 @endsection

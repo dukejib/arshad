@@ -8,7 +8,7 @@ $(document).ready(function(){
         "newestOnTop": false,
         "progressBar": true,
         // "positionClass": "toast-bottom-full-width",
-        "positionClass": "toast-bottom-center",
+        // "positionClass": "toast-bottom-center",
         "preventDuplicates": false,
         "onclick": null,
         "showDuration": "300",
@@ -49,7 +49,7 @@ $(document).ready(function(){
                 items:2
             },
             800:{
-                items:3
+                items:2
             },
             1000:{
                 items:3
@@ -72,7 +72,7 @@ $(document).ready(function(){
             dataType: "json",
             data: {email:$email,password:$password,'_token':$('meta[name=csrf-token]').attr('content')}, //get Csrf-Token
             success:function(res,status){
-                // console.log('Resp : ' + res.statusText + ' Code : ' + res.status + ' Status : ' + status);
+                console.log('Resp : ' + res.statusText + ' Code : ' + res.status + ' Status : ' + status);
                 $('#login_form')[0].reset();
                 //WE are all done
                 $('#loginModal').modal('hide');
@@ -80,7 +80,7 @@ $(document).ready(function(){
                 window.location.replace(res);
                 },
             error:function(res,status){
-                // console.log('Resp : ' + res.statusText + ' Code : ' + res.status + ' Status : ' + status);
+                console.log('Resp : ' + res.statusText + ' Code : ' + res.status + ' Status : ' + status);
                 $('#login_errors').html('Unable to log you in');
                 // console.log(obj.statusText + ' ' +  obj.status);
                 },
@@ -110,48 +110,6 @@ $(document).ready(function(){
             }
         });
     });
-
-
-    $('#forgotPassword').click(function(){
-        $('#loginModal').modal('hide');
-        $forgotpass_url = $('#passforgot_url').val();
-        console.log($forgotpass_url);
-        $.ajax({
-            type: "GET",
-            url: $forgotpass_url,
-            data: "data",
-            dataType: "json",
-            success: function (response) {
-                // console.log(response);
-                window.location.replace(response);
-            },
-            error:function(response){
-                // console.log(response);
-            }
-        });
-
-    });
-
-
-    // $('#facebookLogin').click(function(){
-        
-    //     $('#loginModal').modal('hide');
-    //     $facebook_url = $('#facebook_url').val();
-    //     console.log($facebook_url);
-    //     $.ajax({
-    //         type: "GET",
-    //         url: $facebook_url,
-    //         data: "data",
-    //         dataType: "json",
-    //         success: function (response) {
-    //             console.log(response);
-    //             // window.location.replace(response);
-    //         },
-    //         error:function(response){
-    //             // console.log(response);
-    //         }
-    //     });
-    // });
 
     //Clear the Modals
     $('#loginModal').on('hide.bs.modal',function(){

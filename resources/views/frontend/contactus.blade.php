@@ -6,9 +6,9 @@
     
     <div class="row">
 
-        <div class="animated fadeInUp">
+        <div class="animated fadeInLeft">
             <h1 class="heading-all">Contact Us</h1>
-            <p class="text-justify"><h3>We are here to listen to your complains, queries and most definitely your "feedback" ,since you are our #1 priority</h3></p>
+            <p class="text-justify"><h3>We are here to listen to your complaints, queries and most definitely your <em>feedback</em>,since you are our <em>#1</em> priority</h3></p>
         </div>
     </div>
 
@@ -16,40 +16,103 @@
 
 <div class="container block-white">
 
-    <div class="container">
-        <h1 class="heading-all">Get in Touch</h1>
-        <br>
-        <div class="container">
-            <!-- Form Start -->
-            <form id="email_form">
-               
-                <div class="form-group">
-                    <input type="text" class="form-control form-control-lg" placeholder="Your Name" name="username" id="username" required>
+    <h2 class="heading-all">Contact Us</h2>
+
+    <div class="row justify-content-center mt-2">
+        <div class="col-md-8 col-sm-12">
+            
+            <div class="card">
+                <div class="card-header text-white bg-dark text-uppercase">
+                    Your Details
                 </div>
-                <div class="form-group">
-                    <input type="email" class="form-control form-control-lg" placeholder="YourEmail@email.com" name="email" id="email" required>
+                    
+                    <div class="card-body">
+                        <form  aria-label="ContactUs" id="email_form">
+                            @csrf
+
+                            <div class="form-group row">
+                                <label for="name" class="col-md-4 col-form-label text-md-right">Full Name</label>
+
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control form-control-lg" placeholder="Your Name" name="username" id="username" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="email" class="col-md-4 col-form-label text-md-right">Email Address</label>
+
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control form-control-lg" placeholder="YourEmail@email.com" name="email" id="email" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="password" class="col-md-4 col-form-label text-md-right">Cell Number</label>
+
+                                <div class="col-md-6">
+                                    <input type="text"  class="form-control form-control-lg" placeholder="Your Phone Number (03001234567)" name="number" id="number" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Reason of Contact</label>
+                                
+                                <div class="col-md-6">
+                                    <select name="reason" id="reason" class="form-control">
+                                        <option value="0">Choose Your Reason</option>
+                                        <option value="Complain">Complain</option>
+                                        <option value="Feedback">Feedback</option>
+                                        <option value="General Query">General Query</option>
+                                        <option value="Jobs">Jobs</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Comments</label>
+
+                                <div class="col-md-6">
+                                    <textarea class="form-control form-control-lg" name="comment" id="comment" maxlength="3000" required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-success btn-block rounded-0">
+                                        <i class="fa fa-envelope"></i> Submit
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="text"  class="form-control form-control-lg" placeholder="Your Phone Number (03001234567)" name="number" id="number" required>
+            
+        </div>
+
+        <div class="col-md-4 col-sm-12">
+
+            <div class="card">
+                <div class="card-header text-white bg-dark text-uppercase">
+                    Our Address
                 </div>
-                <div class="form-group">
-                    <select name="reason" id="reason" class="form-control">
-                        <option value="0">Choose Your Reason</option>
-                        <option value="Complain">Complain</option>
-                        <option value="Feedback">Feedback</option>
-                        <option value="General Query">General Query</option>
-                        <option value="Jobs">Jobs</option>
-                    </select>
+                    
+                <div class="card-body">
+                    <p>
+                        <strong>Address:</strong><br>
+                        Shop# 2, Corner Zakriya Town,<br>
+                        Main Bossan Road, <br>
+                        Opposite Chase Up,<br>
+                        Multan
+                    </p>
+                    
                 </div>
-                <div class="form-group">
-                    <textarea class="form-control form-control-lg" name="comment" id="comment" maxlength="3000" required></textarea>
-                </div>
-                <input type="submit" class="btn btn-danger btn-block rounded-0" value="Send" name="submit">
-              
-            </form>
-            <!-- Form Start -->
+            </div>
+
         </div>
     </div>
+    <!-- Form End -->
+
+       
 
 </div>
 <br>

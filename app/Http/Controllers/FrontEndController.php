@@ -7,6 +7,7 @@ use App\Product;
 use Illuminate\Http\Request;
 use App\Events\ContactMadeEvent;
 use PHPUnit\Framework\MockObject\Stub\Exception;
+// use Illuminate\Support\Facades\Request;
 
 class FrontEndController extends Controller
 {
@@ -60,14 +61,26 @@ class FrontEndController extends Controller
         ->with('products',$product);
     }
 
-    public function user_register()
-    {
-        return response()->json(route('register'));
-    }
-
     public function user_passforgot()
     {
         // return redirect()->route('');
     }
+
+    public function terms()
+    {
+        return view('frontend.terms');
+    }
+
+    public function privacypolicy()
+    {
+        return view('frontend.privacypolicy');
+    }
+
+    public function faqs()
+    {
+        return view('frontend.faqs');
+    }
+
+    
 }
 
