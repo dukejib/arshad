@@ -12,7 +12,7 @@ use PHPUnit\Framework\MockObject\Stub\Exception;
 class FrontEndController extends Controller
 {
     public function index(){
-        $products = Product::all();
+        $products = Product::inRandomOrder()->get();
         return view('frontend.landing')
         ->with('products',$products);
     }

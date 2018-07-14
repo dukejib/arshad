@@ -14,14 +14,14 @@ use App\Http\Controllers\HomeController;
 |
 */
 /** Remove this route in production */
-Route::get('/', function () {
-    return view('teaser');
-    // return view('welcome');  
-});
+// Route::get('/', function () {
+//     return view('teaser');
+//     // return view('welcome');  
+// });
 
 /** All Frontend Open Routes */
 //===========================//
-Route::get('/landing','FrontEndController@index')->name('home');
+Route::get('/','FrontEndController@index')->name('home');
 Route::get('/contactus','FrontEndController@contactus')->name('contactus');
 Route::post('/contactus','FrontEndController@post_contactus')->name('contactus.post');
 Route::get('/terms','FrontEndController@terms')->name('terms');
@@ -33,6 +33,7 @@ Route::get('/products/{slug}','FrontEndController@get_products')->name('view.pro
 
 /** Login/Register Routes  */
 //==========================/
+// Route::get('/login','UserController@showLoginForm');
 Route::post('/user/login','UserController@user_login')->name('user.login'); //Jquery for Login
 Route::get('/user/register','UserController@showRegisterForm')->name('user.register');
 Route::post('/user/register','UserController@register')->name('user.register');
@@ -63,9 +64,10 @@ Route::get('/cart/remove/{id}','CartController@cartRemove')->name('cart.remove')
 Route::get('/cart/clear','CartController@clear_cart')->name('cart.clear'); //Clear Cart
 Route::get('/cart/decrease_qty/{id}/{qty}','CartController@decrease_item')->name('cart.decrease');
 Route::get('/cart/increase_qty/{id}/{qty}','CartController@increase_item')->name('cart.increase');
-Route::get('/cart/checkout','CartController@showCartCheckout')->name('cart.checkout');
-Route::get('/cart/checkout/proceed','CartController@cartProceed')->name('cart.proceed');
-Route::get('/cart/checkout/confirm','CartController@cartCheckoutConfirm')->name('cart.confirm');
+Route::get('/cart/showcheckout','CartController@showCartCheckout')->name('cart.checkout');// Moves to proceed
+Route::get('/cart/proceedcheckout','CartController@cartProceed')->name('cart.proceed'); //Shows CartChecoutOriginal Page
+Route::get('/cart/confirm/order','OrderController@store')->name('cart.confirm');
+Route::get('/order/thankyou/{order}/{user}','OrderController@thankyou')->name('thanks');
 /** Auto Generated Auth Routes */
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home'); 

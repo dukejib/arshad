@@ -2,21 +2,24 @@
 
 @section('content')
 
-<div class="container block-transparent mt-2">
+<div class="container block-transparent mt-2 mb-2">
      
     <div class="row">
 
-        <div class="animated fadeInLeft">
-            <h1 class="heading-all">Shopping Cart</h1>
-            <p class="text-justify"><h3>View your selected items, alter item quantity as per requirements</h3></p>
+        <div class="headings animated fadeInLeft">
+            Shopping Cart
+            <p>
+                View your selected items, alter item quantity as per requirements
+            </p>
         </div>
+
     </div>
 
 </div>
 
 <div class="container block-white">
 
-    <h2 class="heading-all">Shopping Cart</h2>
+    <div class="subheading">Shopping Cart</div>
 
     @if(Session::has('cart'))
 
@@ -115,17 +118,22 @@
 
                     <div class="row">
                         <div class="col">
-                            <a href="{{route('home') }}" class="btn btn-success rounded-0 btn-block">Continue Shopping</a>
+                        <a href="{{route('home') }}" class="btn btn-success rounded-0 btn-block">Continue Shopping</a>
                         </div>
                         <div class="col">
                             @if(Cart::content()->count()> 0)
                                 <button class="btn btn-danger rounded-0 btn-block" id="checkout">Checkout</button>
-                                {{-- <a href="" class="btn btn-danger rounded-0 btn-block" >Checkout</a> --}}
                             @endif
                         </div>
                     </div>
     
                 </div>
+            </div>
+        </div>
+
+        <div class="row m-auto text-center">
+            <div id="info" style="color:red;font-weight:600;text-align:center;">
+                
             </div>
         </div>
 
@@ -149,6 +157,8 @@
 <script>
 $(document).ready(function(){
 
+    // $('#info').hide();
+
     var route = '{{route('cart.checkout') }}';
     var authenticated = '{{ Auth::user() }}';
 
@@ -160,7 +170,17 @@ $(document).ready(function(){
 
     $('#checkout').click(function(){
         // preventDefault();
-        
+        $total = '{{ Cart::total() }}';
+        console.log(typeof($total));
+        console.log($total);
+
+        if($total < 1000){
+            $('#info').html('The order amount should be more than or equal to Rs 1000/-');
+            // toastr.info('The Order Amount Sould be more than or equal to Rs 1000','Information');
+            return;
+        }
+        // return;
+
         if(!authenticated){
             $('#loginModal').modal('show');
         };

@@ -3,15 +3,19 @@
 @section('content')
 
 {{-- Top Graphics --}}
-<div class="container block-transparent mt-2">
+<div class="container block-transparent mt-2 mb-2">
     
     <div class="row">
-
+        
         <div class="col-lg-6 col-sm-12 animated fadeInLeft">
-            <h1 class="heading-block-transparent">The Meat Masters</h1>
-            <p class="text-justify">
-                <p class="subheading">Our highly equipped and professional &quot;Meat Masters&quot; provides you the finely trimmed premium quality meat in all cuts.</p>
-            </p>
+            
+            <div class="headings animated fadeInLeft">
+                The Meat Masters
+                <p>
+                    Our highly equipped and professional &quot;Meat Masters&quot; provides you the finely trimmed premium quality meat in all cuts
+                </p>
+            </div>
+            
         </div>
 
         <div class="col-lg-6 col-sm-12 animated fadeInRight">
@@ -25,7 +29,7 @@
 {{-- Products --}}
 <div class="container block-white mt-2">
 
-    <h2 class="heading-all">Our Cuts</h2>
+    <div class="subheading">Our Cuts</div>
 
     <div class="owl-carousel owl-theme animated fadeInUp">
 
@@ -54,7 +58,7 @@
 {{-- Delivery --}}
 <div class="block-black">
     <div class="container">
-        <h2 class="heading-all">Product Quality & Service</h2>
+        <div class="subheading">Product Quality & Service</div>
     
         <div class="row">
             <div class="col-lg-6 col-sm-12 about-product">
@@ -77,7 +81,7 @@
 {{-- Map --}}
 <div class="map-white">
     <div class="container">
-        <h2 class="heading-all">Visit our Outlet in Multan</h2>
+        <div class="subheading">Visit our Outlet in Multan</div>
         
         {{-- Map --}}
         <div id="map">

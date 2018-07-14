@@ -50,6 +50,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd($request->all());
         $this->validate($request,[
             'title' => 'required|min:4',
             'cut_source' => 'required|min:4',

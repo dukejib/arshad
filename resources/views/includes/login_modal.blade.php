@@ -13,10 +13,10 @@
         <div class="modal-body">
             <div class="row row-divided">
                 
-                <div class="col-md-6 column-2">
-                        
+                <div class="col-md-6">
+                    <h5>Ribsncuts Account</h5>
                     <form id="login_form">
-                        <h5>Ribsncuts Account</h5>
+                       
                         <div class="form-group">
                             <input type="email" name="email" id="email" class="form-control rounded-0" placeholder="you@email.com" maxlength="64" required>
                         </div>
@@ -35,7 +35,7 @@
 
                 <div class="vertical-divider">or</div>
 
-                <div class="col-md-6 column-1 text-center">
+                <div class="col-md-6" id="socialmediadiv">
                     <h5>Social Account Signin</h5>
                     <p class="mt-2 mb-2">Your Facebook account</p>
                     <a href="{{ route('facebook.login') }}" class="btn btn-primary rounded-0 btn-block mt-2 mb-2"><i class="fa fa-facebook"></i> Facebook</a>

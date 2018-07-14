@@ -1,7 +1,7 @@
 @extends('layouts.frontend_master') 
 @section('content')
 
-<div class="container block-white mt-2">
+<div class="container block-white mt-2 mb-2">
 
     <div class="row ">
 
@@ -23,20 +23,20 @@
 
     </div>
    
-    <div class="animated fadeIn">
+    <div class="animated fadeInUp">
            
-        @foreach($products->chunk(3) as $productChunk)
+        {{-- @foreach($products->chunk(3) as $productChunk) --}}
         <div class="row">
-            @foreach($productChunk as $product)
-            <div class="col-md-4 col-sm-6 col-lg-4 mt-4 mb-4">
+            @foreach($products as $product)
+            <div class="col-md-6 col-sm-12 col-lg-4 mt-4 mb-4">
 
                 <div class="card">
                     <a href="{{ route('view.product',['slug' => $product->slug ]) }}">
                         <img class="card-img-top rounded-0" src="{{ asset('/images/products/' . $product->image) }}" alt="{{ $product->title }}">
                     </a>
                     <div class="card-body rounded-0">
-                        <h5 style="font-weight:900">{{ $product->title }}</h5>
-                        <p class="text-danger" style="font-weight:bold"> Rs. {{ $product->price_per_kg }} / Kg</p>
+                        <h5 style="font-weight:600">{{ $product->title }}</h5>
+                        <p class="text-danger" style="font-weight:600"> Rs. {{ $product->price_per_kg }} / Kg</p>
                         <p class="card-text">{!! str_limit($product->description,100) !!}</p>
 
                     </div>
@@ -83,7 +83,7 @@
             </div>
             @endforeach
         </div>
-        @endforeach
+        {{-- @endforeach --}}
 
     </div>
 
@@ -147,7 +147,9 @@ $(document).ready(function(){
             data: {'_token':$('meta[name=csrf-token]').attr('content')}, //get Csrf-Token
             success:function(res,status){
                 console.log('Resp : ' + res + ' Status : ' + status);
-                // toastr.success('Product Added to Cart','Success');
+                setInterval(function(){
+                    toastr.success('Product Added to Cart','Success');
+                },2000);
                 // sessionStorage.setItem("SessionName","SessionData");
                 // $('#login_form')[0].reset();
                 //WE are all done

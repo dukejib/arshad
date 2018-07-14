@@ -2,12 +2,13 @@
 
 namespace App\Listeners;
 
-use App\Mail\ContactMadeEmail;
+use App\Mail\NewOrderGeneratedEmail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Mail\NewOrderGeneratedEmailShop;
 
-class ContactMadeEmailToAdmin
+class NewOrderGeneratedSendEmail
 {
     /**
      * Create the event listener.
@@ -27,9 +28,9 @@ class ContactMadeEmailToAdmin
      */
     public function handle($event)
     {
-        // return $event;
-        // dd($event);
-        Mail::to('info@gmail.com')->send(new ContactMadeEmail($event));
-        // dd ($contact);
+        //Send Email to User
+        Mail::to($event->user)->send(new NewOrderGeneratedEmail($event));
+        //Send Email to Shop
+        Mail::to('shop@ribsncuts.com')->send(new NewOrderGeneratedEmailShop($event));
     }
 }

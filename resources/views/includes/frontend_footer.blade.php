@@ -2,7 +2,7 @@
 <footer>
     <div class="container">
         
-        <ul class="nav justify-content-center nav-fill">
+        <ul class="nav justify-content-center nav-fill footer-li">
             <li class="nav-item">
             <a href="{{ route('contactus') }}" class="nav-link">Contact Us</a>
             </li>

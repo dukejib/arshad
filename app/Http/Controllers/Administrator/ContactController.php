@@ -27,7 +27,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::all();
+        $contacts = Contact::orderBy('created_at','DESC')->get();
         return view('backend.contacts.index')
         ->with('contacts',$contacts);
     }

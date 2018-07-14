@@ -27,7 +27,7 @@
             <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
                 <ul class="navbar-nav ml-auto nav-fill w-100">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('cart')}}"><i class="fa fa-shopping-bag"></i> Cart <span class="badge badge-danger">{{ Session::has('cart')? Cart::count() : '' }}</span></a>
+                        <a class="nav-link" href="{{ route('cart')}}"><i class="fa fa-shopping-bag"></i> Cart <span class="badge badge-danger">{{ Session::has('cart')? Cart::content()->count() : '' }}</span></a>
                     </li>
                     @guest
                     <li class="nav-item">

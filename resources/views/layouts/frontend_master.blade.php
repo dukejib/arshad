@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
+    <base href="https://www.ribsncuts.com/" />
 
-    <title>Ribs n Cuts</title>
+    <title>Ribs n Cuts | Your Own Meat Providers</title>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Fresh , Juicy, Beef & Mutton to cater your culinary needs. Let Ribs n Cuts be the part of your party by providinig tender meat to your door step">
+    <meta name="keywords" content="meat,beef,mutton,mince,ribs,multan,local,nihari,gol,boti,delivery">
     <meta name="author" content="Ali Jibran">
-    <meta name="createdby" content="http://karacraft.com">
+    <meta name="createdby" content="https://karacraft.com">
+    <meta name="robots" content="index.follow">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+  
     @yield('meta-tags')     {{-- Get Special Meta Tages for Facebook Share --}}
 
     <!-- Style Sheets -->
@@ -44,9 +50,16 @@
     <meta name="msapplication-TileImage" content="{{ asset('/images/icons/ms-icon-144x144.png') }}">
     <meta name="theme-color" content="#ffffff">
 
-    <style>
-  
-    </style>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122271693-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-122271693-1');
+</script>
+
 
 </head>
 

@@ -2,24 +2,27 @@
 
 @section('content')
 
-<div class="container block-transparent mt-2">
+<div class="container block-transparent mt-2 mb-2">
     
     <div class="row">
 
-        <div class="animated fadeInLeft">
-            <h1 class="heading-all">Contact Us</h1>
-            <p class="text-justify"><h3>We are here to listen to your complaints, queries and most definitely your <em>feedback</em>,since you are our <em>#1</em> priority</h3></p>
+        <div class="headings animated fadeInLeft">
+            Contact Us
+            <p>
+                We are here to listen to your complaints, queries and most definitely your <em>feedback</em>, since you are our <em>#1</em> priority
+            </p>
         </div>
+
     </div>
 
 </div>
 
-<div class="container block-white">
+<div class="container block-white mt-2 mb-2">
 
-    <h2 class="heading-all">Contact Us</h2>
+    <div class="subheading">Contact Us</div>
 
-    <div class="row justify-content-center mt-2">
-        <div class="col-md-8 col-sm-12">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-sm-12 mt-2 mb-2">
             
             <div class="card">
                 <div class="card-header text-white bg-dark text-uppercase">
@@ -89,7 +92,8 @@
             
         </div>
 
-        <div class="col-md-4 col-sm-12">
+
+        <div class="col-md-4 col-sm-12 mt-2 mb-2">
 
             <div class="card">
                 <div class="card-header text-white bg-dark text-uppercase">
@@ -142,10 +146,12 @@
             $reason = $('#reason').val();
 
             if($reason == 0){
-                swal({
-                    title: "Reason Required",
-                    text: "Please choose a valid reason.",
-                    icon:"warning"});
+                // toastr.info('Please choose a valid reason',"Reason Required");
+                // swal({
+                //     title: "Reason Required",
+                //     text: "Please choose a valid reason.",
+                //     icon:"warning"});
+                $('#reason').focus();
                 return;
             }
 
@@ -160,12 +166,13 @@
                 dataType: "json",
                 data: {username:$username,email:$email,comment:$comment,reason:$reason,number:$number,'_token':$('meta[name=csrf-token]').attr('content')},
                 success:function(obj){
-                    console.log(obj.result);
-                    swal({
-                        title:"Email Submitted",
-                        text:"Thank you for contacting us.",
-                        icon:"success"
-                    });
+                    // console.log(obj.result);
+                    toastr.success('Email Submitted','Operation Succesful');
+                    // swal({
+                    //     title:"Email Submitted",
+                    //     text:"Thank you for contacting us.",
+                    //     icon:"success"
+                    // });
                     // toastr.success(obj.result,'Operation Successful');
                     //Reset the form
                     $('#email_form')[0].reset();
@@ -174,12 +181,14 @@
                     },
                 error:function(obj){
                     // console.log('error happened');
-                    console.log(obj.error);
-                    swal({
-                        title:"Operation Failed",
-                        text:"Error sending your email. Please try again.",
-                        icon:"warning"
-                    });
+                    // console.log(obj.error);
+                    toastr.error('Error Sending Email','Operation Failed');
+
+                    // swal({
+                    //     title:"Operation Failed",
+                    //     text:"Error sending your email. Please try again.",
+                    //     icon:"warning"
+                    // });
                     // toastr.error(obj.error,'Operation Failed');
                     }
             })

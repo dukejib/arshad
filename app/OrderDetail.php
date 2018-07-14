@@ -12,7 +12,7 @@ class OrderDetail extends Model
 
 
     /** Relationship */
-    public function belongsTo()
+    public function order()
     {
         return $this->belongsTo('App\Order');
     }

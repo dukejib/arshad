@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function profile()
     {
         return view('profile')
-        ->with('orders',Order::where('user_id',auth()->id()))
+        ->with('orders',Order::where('user_id',auth()->id())->orderBy('created_at','Desc')->get())
         ->with('user',auth()->user());
     }
     

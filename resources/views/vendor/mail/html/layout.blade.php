@@ -26,7 +26,7 @@
     <table class="wrapper" width="100%" cellpadding="0" cellspacing="0">
         <tr>
             <td align="center">
-                <table class="content" width="100%" cellpadding="0" cellspacing="0">
+                <table class="content" width="100%" cellpadding="0" cellspacing="0" style="background-color:black">
                     {{ $header ?? '' }}
 
                     <!-- Email Body -->

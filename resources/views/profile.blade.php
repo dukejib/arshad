@@ -106,7 +106,6 @@
             @if($orders->count()>0)
             <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                 <div class="table-responsive-sm table-responsive-md">
-                    
                    
                     <table class="table table-bordered" style="height: 100px">
                         <thead class="thead-dark text-white text-uppercase text-center">
@@ -116,24 +115,30 @@
                                 <th>Sub Total</th>
                                 <th>Grand Total</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                <th>City</th>
+                                {{-- <th colspan="2">Action</th> --}}
                             </tr>
                         </thead>
-                        @if($orders->count()>0)
-                            @foreach($orders as $order)
-                                <tbody> 
-                                    <tr>
-                                    <td>{{ $order->created_at->diffForHumans()}}</td>
-                                    <td>{{ $order->id }}</td>
-                                    <td>{{ $order->subtotal }}</td>
-                                    <td>{{ $order->grandtotal }}</td>
-                                    <td>{{ $order->status }}0</td>
-                                    <td>view</td>
-                                    </tr>
-                                </tbody>
+                        @foreach($orders as $order)
+                            <tbody> 
+                                <tr>
+                                    <td class="align-middle">{{ $order->created_at->diffForHumans() }}</td>
+                                    <td class="align-middle">{{ $order->id }}</td>
+                                    <td class="align-middle">{{ $order->subtotal }}</td>
+                                    <td class="align-middle">{{ $order->grandtotal }}</td>
+                                    <td class="align-middle">{{ $order->status }}</td>
+                                    <td class="align-middle">{{ $order->city }}</td>
+                                    {{-- <td class="align-middle">
+                                        <a href="#"> <i class="fa fa-binoculars fa-2x text-info"></i></a>
+                                    </td> --}}
+                                    {{-- <td class="align-middle">
+                                        <a href="#"> <i class="fa fa-times-circle fa-2x text-danger"></i></a>
+                                    </td> --}}
+                                </tr>
+                            </tbody>
 
-                            @endforeach
-                        @endif
+                        @endforeach
+                    
                     </table>
                    
                 </div>

@@ -22,56 +22,59 @@
 
 @section('content')
 
-<div class="container block-white mt-2">
+<div class="container block-white mb-2 mt-2">
                
     <div class="row">
 
         {{-- Product Description --}}
-        <div class="col-lg-8 col-sm-12 mb-2 mt-2">
+        <div class="col-lg-8 col-sm-12 mb-2 mt-2 animated fadeInUp">
             <div class="col-lg-12">
-                <h2 class="heading-all">{{ $product->title }}</h2>
+                <div class="product-title">{{ $product->title }}</div>
             </div>
             <div class="col-lg-12">
                 <img class="img-fluid" src="{{ asset('/images/products/' . $product->image) }}" alt="{{ $product->title }}">
             </div>
             <div class="col-lg-12">
-                <h3 class="mt-3"><strong>Description</strong></h3>
+                <div class="product-desc-header">Description</div>
             </div>
             <div class="col-lg-12">
-                <h5> {{ $product->description }}</h5>
+                <div class="product-desc"> {{ $product->description }}</div>
             </div>
-            <hr>
-            <div class="col-lg-12 mb-4">
-                    Share It!
-                    {{-- Facebook --}}
-                    <a target="_blank" 
-                    onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={{ route('view.product',['slug' => $product->slug ]) }}&amp;src=sdkpreparse','Facebook Share','width=600,height=400'); return false;"
-                    >
-                    <i class="fa fa-facebook-square fa-2x"></i>
-                    </a>
-
-
-                    {{-- Twitter --}}
-                    <a target="_blank" 
-                    onclick="window.open('http://twitter.com/share?url={{ route('view.product',['slug' => $product->slug ]) }}&amp;via=ribsncuts.com&amp;text=Let us  Shop','Twitter Share','width=600,height=400'); return false;"
-                    >
-                    <i class="fa fa-twitter-square fa-2x"></i>
-                    </a>
-
-
-                    {{-- Pinterest --}}
-                    <a target="_blank" 
-                    onclick="window.open('https://www.pinterest.com/pin/create/button/?url={{ route('view.product',['slug' => $product->slug ]) }}&amp;media={{ asset('/images/products/' . $product->image) }}&amp;description={{$product->description}}','Pinterest Share','width=600,height=400'); return false;"
-                    >
-                    <i class="fa fa-pinterest-square fa-2x"></i>
-                    </a>
-
-                    {{-- Google Plus --}}
-                    <a target="_blank" 
-                    onclick="window.open('https://plus.google.com/share?url={{ route('view.product',['slug' => $product->slug ]) }}',
-                    'Google Share', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
-                    <i class="fa fa-google-plus-square fa-2x"></i>
-                    </a>
+            
+            <div class="col-lg-12">
+                
+                <div class="social-share">
+                        Share It!
+                        {{-- Facebook --}}
+                        <a target="_blank" 
+                        onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={{ route('view.product',['slug' => $product->slug ]) }}&amp;src=sdkpreparse','Facebook Share','width=600,height=400'); return false;"
+                        >
+                        <i class="fa fa-facebook-square fa-2x"></i>
+                        </a>
+    
+    
+                        {{-- Twitter --}}
+                        <a target="_blank" 
+                        onclick="window.open('http://twitter.com/share?url={{ route('view.product',['slug' => $product->slug ]) }}&amp;via=ribsncuts.com&amp;text=Let us  Shop','Twitter Share','width=600,height=400'); return false;"
+                        >
+                        <i class="fa fa-twitter-square fa-2x"></i>
+                        </a>
+    
+    
+                        {{-- Pinterest --}}
+                        <a target="_blank" 
+                        onclick="window.open('https://www.pinterest.com/pin/create/button/?url={{ route('view.product',['slug' => $product->slug ]) }}&amp;media={{ asset('/images/products/' . $product->image) }}&amp;description={{$product->description}}','Pinterest Share','width=600,height=400'); return false;"
+                        >
+                        <i class="fa fa-pinterest-square fa-2x"></i>
+                        </a>
+    
+                        {{-- Google Plus --}}
+                        <a target="_blank" 
+                        onclick="window.open('https://plus.google.com/share?url={{ route('view.product',['slug' => $product->slug ]) }}',
+                        'Google Share', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+                        <i class="fa fa-google-plus-square fa-2x"></i>
+                        </a>
+                </div>
                 
             </div>
         </div>
@@ -91,13 +94,15 @@
             <div class="border border-secondary">
 
                 {{-- Availability --}}
-                <div class="col-lg-12 col-sm-12 text-center pt-2">
-                    Currently, we are only available in Multan
+                <div class="col-lg-12 col-sm-12 text-center availability-text">
+                    Currently, we are only available in <b>Multan</b>
                 </div>
 
                 {{-- Price --}}
-                <div class="col-lg-12 col-sm-12 text-danger text-center mb-2" style="font-size:125%;font-weight:bold;">
-                    Rs. {{ $product->price_per_kg }} / Kg
+                <div class="col-lg-12 col-sm-12">
+                    <div class="price-text">
+                        Rs. {{ $product->price_per_kg }} / Kg
+                    </div>
                 </div>
 
                 {{-- Qty Buttons --}}
@@ -131,7 +136,9 @@
 
                 {{-- Payment Type --}}
                 <div class="col-lg-12 col-sm-12 pt-4 pb-2">
-                    <div class="bg-info text-white p-2 text-center" style="font-weight: bold"><i class="fa fa-money"></i> Pay at the time of delivery</div>
+                    <div class="payment-terms">
+                        <i class="fa fa-money"></i> Pay at the time of delivery
+                    </div>
                 </div>
 
 
@@ -207,7 +214,9 @@
                 data: {'_token':$('meta[name=csrf-token]').attr('content')}, //get Csrf-Token
                 success:function(res,status){
                     console.log('Resp : ' + res + ' Status : ' + status);
-                    // toastr.success('Product Added to Cart','Success');
+                    setInterval(function(){
+                        toastr.success('Product Added to Cart','Success');
+                    },2000);
                     // sessionStorage.setItem("SessionName","SessionData");
                     // $('#login_form')[0].reset();
                     //WE are all done

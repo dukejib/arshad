@@ -32,7 +32,7 @@
                 
                     <div class="form-group">
                         <label for="category">Category</label>
-                        <select name="categroy" id="cateogry">
+                        <select name="category" id="category">
                             <option value="Beef">Beef</option>
                             <option value="Mutton">Mutton</option>
                         </select>

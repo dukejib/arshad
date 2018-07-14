@@ -6,9 +6,13 @@
     
     <div class="row">
 
-        <div class="animated fadeInLeft">
-            <h1 class="heading-all">Terms & Conditions</h1>
+        <div class="headings animated fadeInLeft">
+            Terms & Conditions
+            <p>
+                Please read it thoroughly
+            </p>
         </div>
+       
     </div>
 
 </div>
@@ -18,7 +22,7 @@
     <div class="container">
         
         <div class="row mt-2 terms">
-            <h2 class="heading-all">Terms & Conditions</h2>
+            <div class="subheading">Terms & Conditions</div>
             <p class="justify-left">
                 Thank you for using Ribsncuts online services. We will do our best to ensure a better and convenient user experience for you. By using Ribsncuts website, you accept and agree to the Terms and Conditions set out below.
                 If you do not agree with any of these Terms and Conditions, you must not use this website. It is your responsibility to read the Terms & Conditions thoroughly before proceeding forward with website use as well as for any changes or amendments made from time to time. 
@@ -26,7 +30,7 @@
         </div>
 
         <div class="row mt-2 terms">
-            <h2 class="heading-all">1. Business & Scope of Service</h2>
+            <div class="subheading">1. Business & Scope of Service</div>
             <p class="justify-left">
                 Ribsncuts.com is an e-commerce platform that delivers products through its delivery channel online to provide you a shopping experience from convenience of your home.
             </p>
@@ -45,7 +49,7 @@
         </div>
 
         <div class="row mt-2 terms">
-            <h2 class="heading-all">2. Terms of Use</h2>
+            <div class="subheading">2. Terms of Use</div>
             <p class="justify-left">
                 Any order placed by you at Ribsncuts.com is deemed to have been placed in accordance with these Terms of Use (we suggest you to carefully read all the points).
             </p>
@@ -82,7 +86,7 @@
         </div>
 
         <div class="row mt-2 terms">
-            <h2 class="heading-all">3. Delivery Information</h2>
+            <div class="subheading">3. Delivery Information</div>
             <p class="justify-left">
                 Currently deliveries are only made in area mentioned in website during order placement. Any order booked for a delivery in the areas beyond the above mentioned areas will not be entertained and we do not accept any responsibility for non-delivery of the order.
 
@@ -93,7 +97,7 @@
         </div>
 
         <div class="row mt-2 terms">
-            <h2 class="heading-all">4. Your Account/Profile</h2>
+            <div class="subheading">4. Your Account/Profile</div>
             <p class="justify-left">
 
                 As per the agreement, in order to transact with Ribsncuts you agree to provide us your correct, complete and up to date information including, but not limited to, your legal name, billing and delivery addresses, telephone number and you are required to promptly notify Ribsncuts of any change in your Customer Registration Data at <a href="mailto:info@ribsncuts.com">info@ribsncuts.com</a>.You may also change or update your account information from your account/profile page. Once you become a member, safeguarding and maintaining confidentiality of your account user name and password is your responsibility. Where a fraud is detected with your account or any other irregular activity, Ribsncuts.com reserves the right at its sole discretion to cancel any offers, your orders and suspend/terminate the account.
@@ -101,7 +105,7 @@
         </div>
 
         <div class="row mt-2 terms">
-            <h2 class="heading-all">5. Disclaimer</h2>
+            <div class="subheading">5. Disclaimer</div>
             <p class="justify-left">
                 EXCEPT AS OTHERWISE EXPRESSLY STATED WITH RESPECT TO THE PRODUCTS WE SUPPLY, ALL CONTENTS ON OUR WEBSITE ARE OFFERED ON AN "AS IS" BASIS WITHOUT ANY WARRANTY WHATSOEVER EITHER EXPRESS OR IMPLIED. Ribsncuts MAKES NO REPRESENTATIONS, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS OF THE PRODUCTS FOR A PARTICULAR PURPOSE. Ribsncuts DOES NOT GUARANTEE THE FUNCTIONS CONTAINED ON THE WEBSITE WILL BE UNINTERRUPTED OR ERROR-FREE, THAT THIS WEBSITE OR ITS SERVER WILL BE FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS OR DEFECTS WILL BE CORRECTED EVEN IF Ribsncuts IS AWARE OF THEM.
             </p>

@@ -2,21 +2,24 @@
 
 @section('content')
 
-<div class="container block-transparent mt-2">
+<div class="container block-transparent mt-2 mb-2">
     
     <div class="row">
-
-        <div class="animated fadeInLeft">
-            <h1 class="heading-all">Sign Up</h1>
-            <p class="text-justify"><h3>Create a new account at Ribsncuts to manage your orders</h3></p>
+        
+        <div class="headings animated fadeInLeft">
+            Sign Up
+            <p>
+                Create a new account at Ribsncuts to manage your orders
+            </p>
         </div>
+       
     </div>
 
 </div>
 
 <div class="container block-white">
 
-    <h2 class="heading-all">Sign Up Details</h2>
+    <div class="subheading">Sign Up Details</div>
 
         <!-- Form Start -->
         <div class="row justify-content-center mt-2">
@@ -90,7 +93,7 @@
                                 </div>
                             </div>
                         </form>
-                        <p>Please note that after Registration, you will be redirected to a page, where you can enter your address details for order delivery</p>
+                        <p class="text-center mt-5">Please note that after Registration, you will be redirected to a page, where you can enter your address details for order delivery</p>
                     </div>
                 </div>
             

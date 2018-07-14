@@ -25,6 +25,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\ContactMadeEvent' => [
             '\App\Listeners\ContactMadeEmailToAdmin',
         ],
+        //Listen to Order Generation Event
+        'App\Events\NewOrderGeneratedEvent' => [
+            'App\Listeners\NewOrderGeneratedSendEmail',
+        ],
 
     ];
 

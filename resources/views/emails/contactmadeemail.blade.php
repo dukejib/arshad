@@ -1,6 +1,6 @@
 @component('mail::message')
-Hello, <br>
-Following person contacted us<br>
+Dear Administrator, <br>
+Someone has contacted us on our website!<br>
 <hr>
 Name : {{ $contact['username'] }} <br> 
 Email : {{ $contact['email'] }} <br>
@@ -14,5 +14,5 @@ Comment : {{ $contact['comment'] }} <br>
 
 Please visit the Admin Panel to work on it.<br>
 Thanks,<br>
-{{ config('app.name') }}
+{{ config('app.name') }} Automation
 @endcomponent

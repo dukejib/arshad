@@ -32,7 +32,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo = '/home';
+    protected $redirectTo = '/profile';
 
     /**
      * Create a new controller instance.
@@ -51,6 +51,7 @@ class LoginController extends Controller
      */
     public function redirectToFacebookProvider()
     {
+        Session::put('redirect', $request->input('redirectTo'));
         // $social = 
         return Socialite::driver('facebook')->redirect();
     }
@@ -65,17 +66,20 @@ class LoginController extends Controller
         try{
 
             $socialUser = Socialite::driver('facebook')->user();
+            
+            //Check Info of User
+            $findUser = User::where('email',$socialUser->email)->first();
 
-        //Check Info of User
-        $findUser = User::where('email',$socialUser->email)->first();
-
-        if($findUser){
-            $this->loginAuthUser($findUser);
-         }else{
-             $user = $this->createNewUser($socialUser);
-             //Login
-             $this->loginAuthUser($user);
-         }
+            if($findUser){
+                //If we have user , then Log Him In
+                $this->loginAuthUser($findUser);
+            }else{
+                //User Not in Database, So Create one
+                $user = $this->createNewUser($socialUser);
+                //Login
+                $this->loginAuthUser($user);
+            }
+            return redirect()->intended('/profile');
         // $user->token;
 
         }catch(\Exception $e){
@@ -91,6 +95,7 @@ class LoginController extends Controller
      */
     public function redirectToGoogleProvider()
     {
+        
         return Socialite::driver('google')->redirect();
     }
 
@@ -105,16 +110,19 @@ class LoginController extends Controller
 
             $socialUser = Socialite::driver('google')->user();
 
-        //Check Info of User
-        $findUser = User::where('email',$socialUser->email)->first();
+            //Check Info of User
+            $findUser = User::where('email',$socialUser->email)->first();
 
-        if($findUser){
-           $this->loginAuthUser($findUser);
-        }else{
-            $user = $this->createNewUser($socialUser);
-            //Login
-            $this->loginAuthUser($user);
-        }
+            if($findUser){
+                //If we have user , then Log Him In
+                $this->loginAuthUser($findUser);
+            }else{
+                //User Not in Database, So Create one
+                $user = $this->createNewUser($socialUser);
+                //Login
+                $this->loginAuthUser($user);
+            }
+            return redirect()->intended('/profile');
         // $user->token;
 
         }catch(\Exception $e){
@@ -123,7 +131,7 @@ class LoginController extends Controller
         }
     }
 
-    public function createNewUser($socialUserData)
+    public function createNewUser($socialUser)
     {
         //Create new User
         $user = new User();
@@ -145,7 +153,6 @@ class LoginController extends Controller
 
     public function loginAuthUser($user)
     {
-        Auth::login($findUser);
-        return redirect()->back();
+        Auth::login($user);
     }
 }
