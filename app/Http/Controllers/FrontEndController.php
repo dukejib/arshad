@@ -7,10 +7,10 @@ use App\Product;
 use Illuminate\Http\Request;
 use App\Events\ContactMadeEvent;
 use PHPUnit\Framework\MockObject\Stub\Exception;
-// use Illuminate\Support\Facades\Request;
 
 class FrontEndController extends Controller
 {
+
     public function index(){
         $products = Product::inRandomOrder()->get();
         return view('frontend.landing')
@@ -59,11 +59,6 @@ class FrontEndController extends Controller
         return view('frontend.products')
         ->with('category',$slug)
         ->with('products',$product);
-    }
-
-    public function user_passforgot()
-    {
-        // return redirect()->route('');
     }
 
     public function terms()

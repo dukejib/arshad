@@ -112,6 +112,9 @@ $(document).ready(function(){
     });
 
     //Clear the Modals
+    $('#loginModal').on('show.bs.modal',function(){
+        $(this).find('#login_form')[0].reset();
+    });
     $('#loginModal').on('hide.bs.modal',function(){
         $(this).find('#login_form')[0].reset();
     });

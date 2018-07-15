@@ -3,7 +3,7 @@
 <head>
     <base href="https://www.ribsncuts.com/" />
 
-    <title>Ribs n Cuts | Your Own Meat Providers</title>
+    <title>Ribs n Cuts | The Meat Providers</title>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">

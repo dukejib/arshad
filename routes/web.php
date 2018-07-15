@@ -26,18 +26,18 @@ Route::get('/contactus','FrontEndController@contactus')->name('contactus');
 Route::post('/contactus','FrontEndController@post_contactus')->name('contactus.post');
 Route::get('/terms','FrontEndController@terms')->name('terms');
 Route::get('/privacypolicy','FrontEndController@privacypolicy')->name('privacypolicy');
-// Route::get('/faqs','FrontEndController@faqs')->name('faqs');
 Route::get('/product/{slug}','FrontEndController@get_product')->name('view.product');
 Route::get('/products/{slug}','FrontEndController@get_products')->name('view.products');
 
 
 /** Login/Register Routes  */
 //==========================/
-// Route::get('/login','UserController@showLoginForm');
-Route::post('/user/login','UserController@user_login')->name('user.login'); //Jquery for Login
+Route::get('/login','UserController@showLoginForm')->name('login'); 
+Route::post('/login','UserController@loginUserFromWeb')->name('login');
+Route::post('/user/login','UserController@user_login')->name('user.login'); //Jquery Login
 Route::get('/user/register','UserController@showRegisterForm')->name('user.register');
 Route::post('/user/register','UserController@register')->name('user.register');
-// Route::get('/user/passforgot','FrontEndController@user_passforgot')->name('user.passforgot');
+
 
 /** Socail Media Login */
 //=====================//
@@ -50,15 +50,15 @@ Route::get('login/google/callback', 'Auth\LoginController@handleGoogleProviderCa
 //============================/
 Route::middleware('auth')->group(function(){
 
-    Route::get('/profile','HomeController@profile')->name('profile');
-    Route::post('/profile/address','HomeController@address_update')->name('profile.address');
+    Route::get('/user/profile','HomeController@profile')->name('profile');
+    Route::post('/user/profile/address','HomeController@address_update')->name('profile.address');
     Route::post('/user/logout','HomeController@logout')->name('logout');
 
 });
 
 /** Cart Related Routes */
 //======================//
-Route::get('/cart','CartController@cart')->name('cart'); //Show Cart
+Route::get('/cart/show','CartController@cart')->name('cart'); //Show Cart
 Route::get('/cart/add/{id}/{qty}','CartController@cartAdd')->name('cart.add');
 Route::get('/cart/remove/{id}','CartController@cartRemove')->name('cart.remove');
 Route::get('/cart/clear','CartController@clear_cart')->name('cart.clear'); //Clear Cart

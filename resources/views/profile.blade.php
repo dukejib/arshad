@@ -6,9 +6,11 @@
     
     <div class="row">
 
-        <div class="animated fadeInLeft">
-            <h1 class="heading-all">{{$user->name}}</h1>
-            <p class="text-justify"><h3>Welcome to your Profile</h3></p>
+        <div class="headings animated fadeInLeft">
+            {{$user->name}}
+            <p>
+                Welcome to your Profile
+            </p>
         </div>
     </div>
 
@@ -16,7 +18,7 @@
 
 <div class="container block-white mt-2">
 
-        <h2 class="heading-all">User Profile</h2>
+        <h2 class="subheading">User Profile</h2>
 
     {{-- Tabs --}}
     <div class="m-2 my-3">
@@ -107,7 +109,7 @@
             <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                 <div class="table-responsive-sm table-responsive-md">
                    
-                    <table class="table table-bordered" style="height: 100px">
+                    <table class="table table-bordered mt-5" style="height: 100px">
                         <thead class="thead-dark text-white text-uppercase text-center">
                             <tr>
                                 <th>Date</th>

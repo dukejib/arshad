@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
+
 use App\User;
+use App\Order;
+// use \Illuminate\Http\Request;
 use App\Profile;
 use Illuminate\Http\Request;
-// use \Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -23,7 +26,7 @@ class UserController extends Controller
      * @var string
      */
     // protected $redirectTo = '/home';
-    protected $redirectTo = '/profile';
+    // protected $redirectTo = '/profile';
 
     public function __construct()
     {
@@ -58,7 +61,7 @@ class UserController extends Controller
         return view('frontend.register');
     }
 
-        /**
+    /**
      * Handle a registration request for the application.
      *
      * @param  \Illuminate\Http\Request  $request

@@ -32,7 +32,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/profile';
+    // protected $redirectTo = '/user/profile';
 
     /**
      * Create a new controller instance.
@@ -51,7 +51,7 @@ class LoginController extends Controller
      */
     public function redirectToFacebookProvider()
     {
-        Session::put('redirect', $request->input('redirectTo'));
+        // Session::put('redirect', $request->input('redirectTo'));
         // $social = 
         return Socialite::driver('facebook')->redirect();
     }
@@ -79,7 +79,7 @@ class LoginController extends Controller
                 //Login
                 $this->loginAuthUser($user);
             }
-            return redirect()->intended('/profile');
+            return redirect()->route('profile');
         // $user->token;
 
         }catch(\Exception $e){
@@ -122,7 +122,7 @@ class LoginController extends Controller
                 //Login
                 $this->loginAuthUser($user);
             }
-            return redirect()->intended('/profile');
+            return redirect()->route('profile');
         // $user->token;
 
         }catch(\Exception $e){
@@ -137,7 +137,7 @@ class LoginController extends Controller
         $user = new User();
         $user->name = $socialUser->name;
         $user->email = $socialUser->email;
-        $user->password = bcrypt('rnc2018-123');
+        $user->password = bcrypt('rncsocialuser2018');
         $user->save();
         //create the profile page
         Profile::create([

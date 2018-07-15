@@ -27,14 +27,15 @@ class HomeController extends Controller
     public function profile()
     {
         return view('profile')
-        ->with('orders',Order::where('user_id',auth()->id())->orderBy('created_at','Desc')->get())
-        ->with('user',auth()->user());
+            ->with('orders',Order::where('user_id',auth()->id())->orderBy('created_at','Desc')->get())
+            ->with('user',auth()->user());
+        
     }
     
     public function address_update(Request $request)
     {
         $this->validate($request,[
-            'contact' => 'required|min:5',
+            'contact' => 'required|min:3',
             'cellnumber' => 'required|min:11|numeric',
             'address' => 'required'
         ]);
@@ -49,7 +50,7 @@ class HomeController extends Controller
         Session::flash('success','Information updated');
         return redirect()->back();
     }
-
+    
     public function logout()
     {
         Auth::logout();
