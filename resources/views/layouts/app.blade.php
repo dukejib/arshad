@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Ali Jibran">
-    <meta name="createdby" content="http://karacraft.com">
+    <meta name="createdby" content="https://karacraft.com">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -26,11 +26,11 @@
 
     <!-- External Style Sheets -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" rel="stylesheet"/>
 
 </head>
 
 <body>
+
     {{-- Navigation --}}
     @include('includes.backend_navigation')
     <div id="app">
@@ -55,5 +55,7 @@
             toastr.success("{{ Session::get('failure') }}",'Failed');
         @endif
     </script>
+
+    @yield('scripts')
 </body>
 </html>

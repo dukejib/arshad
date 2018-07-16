@@ -70,6 +70,10 @@ return [
     'administrators' => [
         'dukejib@gmail.com',
         'alijib@outlook.com',
+        'canmultan@yahoo.com',
+        'canmultan@gmail.com',
+        'arshad@ribsncuts.com',
+        'jibran@ribsncuts.com'
     ],
     /*
     |--------------------------------------------------------------------------

@@ -24,23 +24,35 @@ class OrderController extends Controller
         $this->middleware('auth');   
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index($type)
     {
-        //TODO: show orders in admin
+
+        switch ($type) {
+            case 'pending':
+                //Send Pending Orders
+                return view('backend.orders.index')
+                ->with('type','Pending')
+                ->with('orders',Order::where('status','Pending')->orderBy('created_at','DESC')->with('order_details')->get());
+                break;
+
+            case 'transit':
+                //Send Pending Orders
+                return view('backend.orders.index')
+                ->with('type','Transit')
+                ->with('orders',Order::where('status','Transit')->orderBy('created_at','DESC')->with('order_details')->get());
+                break;
+            
+            case 'completed':
+                //Send COmpleted Orders
+                return view('backend.orders.index')
+                ->with('type','Completed')
+                ->with('orders',Order::where('status','Completed')->orderBy('created_at','DESC')->with('order_details')->get());
+                break;
+        }
+
+        
     }
 
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store()
     {
         //TODO: Add The ORder to Tables, Process it, Send Emails and move forward
@@ -116,6 +128,30 @@ class OrderController extends Controller
         return view('frontend.thankyou')
         ->with('order',$order)
         ->with('user',$user);
+    }
+
+    public function statusToggler($toggle,$id)
+    {
+        switch ($toggle) {
+            case 'Transit':
+                $order = Order::where('id',$id)->first();
+                $order->status = 'Transit';
+                $order->save();
+                Session::flash('success','Order in Transit');
+                return redirect()->back();
+                break;
+
+            case 'Completed':
+                $order = Order::where('id',$id)->first();
+                $order->status = 'Completed';
+                $order->save();
+                Session::flash('success','Order Completed');
+                return redirect()->back();
+                break;
+            default:
+                # code...
+                break;
+        }
     }
 
     /**

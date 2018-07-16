@@ -54,6 +54,9 @@ Route::middleware('auth')->group(function(){
     Route::post('/user/profile/address','HomeController@address_update')->name('profile.address');
     Route::post('/user/logout','HomeController@logout')->name('logout');
 
+    Route::get('/orders/{type}','OrderController@index')->name('orders');
+    Route::get('/order/status/{toggle}/{id}','OrderController@statusToggler')->name('order.status');
+
 });
 
 /** Cart Related Routes */

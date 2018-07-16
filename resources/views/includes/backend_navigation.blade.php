@@ -26,13 +26,28 @@
                         </li>
                     @else
                         <li class="nav-item">
-                                <a href="#" class="nav-link">Contacts</a>
+                            <a href="{{ route('contact.index',['type' => 'Job']) }}" class="nav-link"><i class="fa fa-briefcase text-secondary"></i> Job
+                                <span class="badge badge-secondary">{{ App\Contact::jobTotal() }}</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('contact.index',['type' => 'General Query']) }}" class="nav-link"><i class="fa fa-question text-warning"></i> Query
+                                <span class="badge badge-warning">{{ App\Contact::queryTotal() }}</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('contact.index',['type' => 'Complain']) }}" class="nav-link"><i class="fa fa-exclamation-triangle text-danger"></i> Complains
+                                <span class="badge badge-danger">{{ App\Contact::complainTotal() }}</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('contact.index',['type' => 'Feedback']) }}" class="nav-link"><i class="fa fa-compress text-info"></i> Feedback
+                                <span class="badge badge-info">{{ App\Contact::feedbackTotal() }}</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                           document.getElementById('logout-form').submit();">
-                             {{ __('Logout') }}
+                                          <i class="fa fa-sign-out"></i>
+                                          {{ __('Logout') }}
+                             
                          </a>
 
                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

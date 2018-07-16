@@ -25,11 +25,45 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($type)
     {
-        $contacts = Contact::orderBy('created_at','DESC')->get();
-        return view('backend.contacts.index')
-        ->with('contacts',$contacts);
+
+        switch ($type) {
+            case 'Feedback':
+                //Send Pending contacts
+                return view('backend.contacts.index')
+                ->with('type','Feedback')
+                ->with('contacts',Contact::where('reason','Feedback')->orderBy('created_at','DESC')->get());
+                break;
+
+            case 'General Query':
+                //Send Pending contacts
+                return view('backend.contacts.index')
+                ->with('type','General Query')
+                ->with('contacts',Contact::where('reason','General Query')->orderBy('created_at','DESC')->get());
+                break;
+            
+            case 'Complain':
+                //Send COmpleted contacts
+                return view('backend.contacts.index')
+                ->with('type','Complain')
+                ->with('contacts',Contact::where('reason','Complain')->orderBy('created_at','DESC')->get());
+                break;
+
+            case 'Job':
+                //Send COmpleted contacts
+                return view('backend.contacts.index')
+                ->with('type','Job')
+                ->with('contacts',Contact::where('reason','Job')->orderBy('created_at','DESC')->get());
+                break;
+            case 'All':
+                //Send COmpleted contacts
+                return view('backend.contacts.index')
+                ->with('type','All')
+                ->with('contacts',Contact::orderBy('created_at','DESC')->get());
+                break;
+        }
+       
     }
 
     /**

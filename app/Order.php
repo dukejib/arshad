@@ -31,4 +31,20 @@ class Order extends Model
     {
         return $this->hasMany('App\CompleteTransaction');
     }
+
+    /** Methods */
+    public static function pendingOrdersTotal()
+    {
+        return count(Order::where('status','Pending')->get());
+    }
+
+    public static function transitOrdersTotal()
+    {
+        return count(Order::where('status','Transit')->get());
+    }
+
+    public static function completedOrdersTotal()
+    {
+        return count(Order::where('status','Completed')->get());
+    }
 }

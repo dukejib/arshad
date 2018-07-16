@@ -34,3 +34,30 @@
     background-color: #4CAF50; /* Add a green color to the "active/current" link */
     color: white;
 }
+
+.show{
+    background-repeat: no-repeat;
+}
+.show::after{
+    content:'';
+    height:24px;
+    width:24px;
+    position:absolute;
+    background: url(../images/show.png);
+    display: block;
+}
+.hide{
+    display:relative
+}
+.hide::after{
+    content:'';
+    height:24px;
+    width:24px;
+    position:absolute;
+    background: url(../images/hide.png);
+    display: block;
+}
+
+.hidden-tr{
+    display:none;
+}

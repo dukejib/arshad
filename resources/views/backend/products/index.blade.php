@@ -12,18 +12,15 @@
     <div class="col-sm-9">
 
             <div class="row">
-                    <div class="col-lg-10 col-sm-12 mt-4 mb-2">
-                        <h2>View All Product</h2>
-                    </div>
-                    <div class="col-lg-2 col-sm-12 mt-4 mb-2">
-                    <a href="{{ route('product.create')}}" class="btn btn-success btn-block">Create New</a>
-                    </div>
-                    
+                <div class="col-lg-10 col-sm-12 mt-4 mb-2">
+                    <h2>View All Product</h2>
                 </div>
-                
-                
-                <div>
-                @if(count($products)>0)
+                <div class="col-lg-2 col-sm-12 mt-4 mb-2">
+                    <a href="{{ route('product.create')}}" class="btn btn-success btn-block">Create New</a>
+                </div>
+            <div>
+            @if(count($products)>0)
+                <div class="table-responsive-sm table-responsive-md">
                     <table class="table table-condensed table-hover table-striped">
                         <thead class="thead-dark">
                             <tr>
@@ -71,10 +68,11 @@
                         @endforeach
                         </tbody>
                     </table>
-                @else
-                    <h3 class="bg-info">There is no Product Available Yet</h3>
-                @endif
                 </div>
+            @else
+                <h3 class="bg-info">There is no Product Available Yet</h3>
+            @endif
+              
 
     </div>
 
