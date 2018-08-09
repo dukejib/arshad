@@ -2,21 +2,19 @@
 Dear {{ $user->name }},<br>
 
 Following are the details of Your Order.<br>
-<hr>
-<table class="table table-bordered">
+<table style="border: 1px solid black;color:white;background:gray">
     <tbody>
         <tr>
-            <td>Order Id</td>
-            <td>{{ $order['id'] }}</td>
+            <td style="padding-left:5px;padding-top:10px">Order Id</td>
+            <td style="padding-left:10px;;padding-top:10px">{{ $order['id'] }}</td>
         </tr>
 
         <tr>
-            <td>Order Total</td>
-            <td>{{ $order['grandtotal'] }}</td>
+            <td style="padding-left:5px">Order Total</td>
+            <td style="padding-left:10px">{{ $order['grandtotal'] }}</td>
         </tr>
     </tbody>
 </table>
-<hr>
 
 You can find the details of order at your Ribsncuts Profile page.
 {{-- @component('mail::button', ['url' => 'https://www.ribsncuts.com/profile'])

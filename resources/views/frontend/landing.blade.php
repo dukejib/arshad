@@ -1,5 +1,27 @@
 @extends('layouts.frontend_master')
 
+@section('meta-tags')
+    {{-- For Facebook --}}
+    <meta property="fb:app_id"                  content="237986806787117">
+    <meta property="og:url"                     content="{{ route('home') }}" />
+    <meta property="og:type"                    content="website" />
+    <meta property="og:title"                   content="RibsnCuts" />
+    <meta property="og:description"             content="Fresh , Juicy, Beef & Mutton to cater your culinary needs. Let Ribs n Cuts be the part of your party by providinig tender meat to your door step"/>
+    <meta property="og:image"                   content="{{ asset('/images/ribsncuts-256b.png') }}" />
+    <meta property="og:image:width"             content="256" />
+    <meta property="og:image:height"            content="256" />
+    {{-- For Twitter --}}
+    <meta name="twitter:card" content="Ribsncuts">
+    <meta name="twitter:site" content="Ribsncuts">
+    <meta name="twitter:title" content="RibsnCuts">
+    <meta name="twitter:description" content="Fresh , Juicy, Beef & Mutton to cater your culinary needs. Let Ribs n Cuts be the part of your party by providinig tender meat to your door step">
+    <meta name="twitter:creator" content="Ribsncuts">
+    <meta name="twitter:image" content="{{ asset('/images/ribsncuts-256b.png') }}">
+    <meta name="twitter:domain" content="ribsncuts.com">
+@endsection
+
+
+
 @section('content')
 
 {{-- Top Graphics --}}

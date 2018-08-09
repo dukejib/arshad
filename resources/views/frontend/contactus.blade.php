@@ -107,7 +107,15 @@
                         Main Bossan Road, <br>
                         Opposite Chase Up,<br>
                         Multan
+                        <br>
+                        <strong>Phone:</strong><br>
+                        0302-2545721
                     </p>
+
+                     {{-- Map --}}
+                    <div id="map">
+            
+                    </div>
                     
                 </div>
             </div>
@@ -128,6 +136,10 @@
 @endsection
 
 @section('scripts')
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg6Ly4QKp1D_21tvBW6DZU40CFcGe4f6M&callback=initMap">
+</script>
+
 <script>
     //Post Url
     $form_url = "{{ route('contactus.post') }}";
@@ -195,6 +207,18 @@
         });
         //Form Submit End Here
     });    
+
+    // Initialize and add the map
+function initMap() {
+    console.log("in map api");
+  // The location of multan
+  var multan = {lat: 30.228450, lng: 71.479049};
+  // The map, centered at multan
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 16, center: multan});
+  // The marker, positioned at multan
+  var marker = new google.maps.Marker({position: multan, map: map});
+}
     </script>
 @endsection
 

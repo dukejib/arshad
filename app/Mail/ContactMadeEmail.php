@@ -17,9 +17,9 @@ class ContactMadeEmail extends Mailable
      *
      * @return void
      */
-    public function __construct($contact)
+    public function __construct($event)
     {
-        $this->contact = $contact;
+        $this->contact = $event->contact;
     }
 
     /**
@@ -29,6 +29,6 @@ class ContactMadeEmail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.contactmadeemail');
+        return $this->markdown('emails.ContactMadeEmail');
     }
 }

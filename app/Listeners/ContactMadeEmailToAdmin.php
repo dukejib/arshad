@@ -29,7 +29,7 @@ class ContactMadeEmailToAdmin
     {
         // return $event;
         // dd($event);
-        Mail::to('info@gmail.com')->send(new ContactMadeEmail($event));
+        Mail::to('info@ribsncuts.com')->send(new ContactMadeEmail($event));
         // dd ($contact);
     }
 }

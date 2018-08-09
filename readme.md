@@ -10,5 +10,6 @@ sweetalert.js //For Alerts
 "kim/activity": "^1.1" - For Online Users - Sessions
 //"pusher/pusher-php-server": "~3.0" - For Notifications on Web
 laravel mix
+laravel Passport
 
 

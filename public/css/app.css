@@ -159,15 +159,15 @@ footer {
 }
 
 .price-text {
-  color: #dc3545;
+  color: #e60000;
   font-size: 1.25em;
   font-weight: 600;
   text-align: center;
   margin: 10px 0px;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-top: 1px solid #dc3545;
-  border-bottom: 1px solid #dc3545;
+  border-top: 1px solid #e60000;
+  border-bottom: 1px solid #e60000;
 }
 
 .payment-terms {
@@ -343,7 +343,7 @@ footer {
 .fa-twitter-square:hover,
 .fa-pinterest-square:hover,
 .fa-google-plus-square:hover {
-  color: #dc3545;
+  color: #e60000;
 }
 
 .nav-tabs {
@@ -352,14 +352,14 @@ footer {
 
 .nav-tabs .nav-link.active {
   color: #fff !important;
-  background-color: #dc3545 !important;
+  background-color: #e60000 !important;
   border-color: #dee2e6 #dee2e6 #f5f8fa;
 }
 
 .nav-tabs .nav-link {
   text-transform: uppercase;
   font-weight: 300;
-  color: #dc3545;
+  color: #e60000;
 }
 
 .about-product ul {
