@@ -1,6 +1,6 @@
-#Arshad's Website - Operational Website
+# Arshad's Website - Operational Website
 
-###The website uses;
+### The website uses;
 
 * Boostrap 4.0 
 * Jquery 3.1 
