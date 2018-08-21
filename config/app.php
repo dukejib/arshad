@@ -67,6 +67,10 @@ return [
 
     // 'timezone' => 'UTC',
     'timezone' => 'Asia/Karachi',
+
+    /*
+    /   Adminstrators for the Ribs n cust
+    */
     'administrators' => [
         'dukejib@gmail.com',
         'alijib@outlook.com',

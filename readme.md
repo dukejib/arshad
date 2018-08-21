@@ -10,6 +10,6 @@ sweetalert.js //For Alerts
 "kim/activity": "^1.1" - For Online Users - Sessions
 //"pusher/pusher-php-server": "~3.0" - For Notifications on Web
 laravel mix
-laravel Passport
+laravel Passport (Ensure to run "php artisan passport:client --personal" if you want to work with your api personal tokesn) and ensure new name like "RibnsCuts-Android"
 
 
