@@ -1,15 +1,13 @@
-##Arshad's Website - Operational Website
+#Arshad's Website - Operational Website
 
-The website uses;
+###The website uses;
 
-Boostrap 4.0 
-Jquery 3.1 
-Toastr.js
-sweetalert.js //For Alerts
-"gloudemans/shoppingcart": "^2.5" - For Shopping Cart
-"kim/activity": "^1.1" - For Online Users - Sessions
-//"pusher/pusher-php-server": "~3.0" - For Notifications on Web
-laravel mix
-laravel Passport (Ensure to run "php artisan passport:client --personal" if you want to work with your api personal tokesn) and ensure new name like "RibnsCuts-Android"
-
+* Boostrap 4.0 
+* Jquery 3.1 
+* Toastr.js
+* sweetalert.js //For Alerts
+* "gloudemans/shoppingcart": "^2.5" - For Shopping Cart
+* "kim/activity": "^1.1" - For Online Users - Sessions
+* laravel mix
+* laravel Passport (Ensure to run **php artisan passport:client --personal** if you want to work with your api personal tokesn)
 
