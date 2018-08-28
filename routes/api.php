@@ -15,14 +15,15 @@ use function GuzzleHttp\json_decode;
 |
 */
 
-Route::get('products',function(){
-    return $products = Product::inRandomOrder()->get();
-});
+Route::get('products','PassportController@get_products');
 
+/**
+ * Returns the date of last update
+ * @return string date
+ */
 Route::get('latest',function(){
     $latest = Product::orderBy('updated_at','desc')->first();
     $date = new DateTime($latest->updated_at);
-
     return response()->json($date->format('Y-m-d'), 200);
 });
 

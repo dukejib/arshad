@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use DateTime;
+use App\Product;
 use App\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +18,19 @@ class PassportController extends Controller
     public $successStatus = 200;
     public $tokenName = "Ribsncuts-Android";
 
+
+    public function get_products()
+    {
+        $products = Product::inRandomOrder()->get();
+        $latest = Product::orderBy('updated_at','desc')->first();
+        $date = new DateTime($latest->updated_at);
+
+        $result['success'] = true;
+        $result['lastUpdate'] = $date->format('Y-m-d'); 
+        $result['products'] = $products;
+        return $result;
+    }
+
     /**
      * Register the User from mobile Device
      * @param name User Full Name 
@@ -26,7 +41,6 @@ class PassportController extends Controller
      */
     public function register(Request $request)
     {
-
         $id = uniqid();
 
         $validator = Validator::make($request->all(),[
@@ -38,7 +52,9 @@ class PassportController extends Controller
 
         if ($validator->fails())
         {
-            return response()->json(['error' => $validator->errors()],401);
+            $result['success'] = false;
+            $result['message'] = $validator->errors();
+            return response()->json($result,462);
         }
 
         //Raise event and send to function for creation
@@ -52,12 +68,12 @@ class PassportController extends Controller
         ]);
 
         // $success = $this->login($request);
-        $success['token'] = $user->createToken($this->tokenName . $id)->accessToken;
-        $success['name'] = $user->name;
-        $success['unique_id'] = $this->tokenName . $id;
-        $success['profile'] = $user->profile;
+        $result['token'] = $user->createToken($this->tokenName . $id)->accessToken;
+        $result['name'] = $user->name;
+        $result['unique_id'] = $this->tokenName . $id;
+        $result['profile'] = $user->profile;
 
-        return response()->json(['success'=>$success], $this->successStatus);
+        return response()->json($result, $this->successStatus);
     }
 
     /**
@@ -72,14 +88,18 @@ class PassportController extends Controller
         {
             $id = uniqid();
             $user = Auth::user();
-            $success['token'] = $user->createToken($this->tokenName . $id)->accessToken;
-            $success['unique_id'] = $this->tokenName . $id;
+            $result['success'] = true;
+            $result['unique_id'] = $this->tokenName . $id;
+            $result['token'] = $user->createToken($this->tokenName . $id)->accessToken;
 
-            return response()->json(['success' => $success], $this-> successStatus);
+            return response()->json($result, $this-> successStatus);
         }
         else
         {
-            return response()->json(['error'=>'Unauthorised'], 401); 
+            $result['success'] = false;
+            $result['message'] = 'Unauthorized User';
+
+            return response()->json($result, 461); 
         }
     }
 
@@ -90,10 +110,11 @@ class PassportController extends Controller
      */
     public function details() 
     { 
-        $success['user'] = Auth::user();
-        $success['profile'] = Auth::user()->profile;
-        $success['orders'] = Auth::user()->orders;
-        return response()->json(['success' => $success], $this-> successStatus); 
+        $result['user'] = Auth::user();
+        $result['profile'] = Auth::user()->profile;
+        $result['orders'] = Auth::user()->orders;
+
+        return response()->json($result, $this-> successStatus); 
     }
 
     /**
