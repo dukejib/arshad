@@ -128,7 +128,7 @@
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 pt-2">
-                            <a href="#" id="addToCart" class="btn btn-success btn-block rounded-0">Add to Cart</a>
+                            <button type="button" id="addToCart" class="btn btn-success btn-block rounded-0">Add to Cart</button>
                         </div>
 
                     </div>
@@ -237,7 +237,7 @@
                 complete:function(){
                     location.reload();
                 }
-            });
+            })
         })
     });
 </script>

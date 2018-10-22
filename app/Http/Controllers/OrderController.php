@@ -55,17 +55,9 @@ class OrderController extends Controller
 
     public function store()
     {
-        //TODO: Add The ORder to Tables, Process it, Send Emails and move forward
-        /* Pseduo Code
-        create pending transaction
-        send email to shop@ribsncuts.com 
-        */
-        
-        // dd(Cart::content());
-
-        $order = $this->createNewOrder();
-    
-        $orderDetails = $this->createNewOrderDetails($order);
+        $order = $this->createNewOrder(Auth::id(),Cart::subtotal(),Cart::total(),'Pending','Multan');
+        // $orderDetails = $this->createNewOrderDetails($order);
+        $orderDetails = $this->createNewOrderDetails(Cart::content(), $order->id);
         
         $pendingTransaction = $this->createNewPendingTransaction($order);
 
@@ -74,45 +66,57 @@ class OrderController extends Controller
         Session::forget('cart');
 
         //Now Send the Email to User
-        event(new NewOrderGeneratedEvent($order,Auth::user()));
+        $this->sendNewOrderEmail($order,Auth::user());
         //Now Return Response or Redirect
-
-        // $this->user = new User();
-        // $this->user = Auth::user();
-        // $this->order = new Order();
-        // $this->order = $order;
-        
         return redirect()->route('thanks',['order' => $order,'user' => Auth::user()]);
     }
 
-    public function createNewOrder()
+    /**
+     * Create new Order in System
+     *
+     * @param int $user_id
+     * @param int $subtotal
+     * @param int $grandtotal
+     * @param string $status
+     * @param string $city
+     * @return Order
+     */
+    public static function createNewOrder($user_id,$subtotal,$grandtotal,$status,$city)
     {
         $order = new Order();
-        $order->user_id = Auth::id();
-        $order->subtotal = Cart::subtotal();
-        $order->grandtotal = Cart::total();
-        $order->status = 'Pending';
-        $order->city = 'Multan';
+        // $order->user_id = Auth::id();
+        // $order->subtotal = Cart::subtotal();
+        // $order->grandtotal = Cart::total();
+        // $order->status = 'Pending';
+        // $order->city = 'Multan';
+        $order->user_id = $user_id;
+        $order->subtotal = $subtotal;
+        $order->grandtotal = $grandtotal;
+        $order->status = $status;
+        $order->city = $city;
         $order->save();
       
         return $order;
     }
 
-    public function createNewOrderDetails(Order $order) 
+    public static function createNewOrderDetails($array,$id) 
     {
-        foreach(Cart::content() as $purchase){
+
+        foreach($array as $purchase){
             
             $order_detail = new OrderDetail();
-            $order_detail->order_id = $order->id;
+            $order_detail->order_id = $id;
             $order_detail->product_id = $purchase->id;
             $order_detail->product_name = $purchase->name;
             $order_detail->product_qty = $purchase->qty;
             $order_detail->product_price = $purchase->price;
             $order_detail->save();
         }
+
+        return true;
     }
 
-    public function createNewPendingTransaction(Order $order)
+    public static function createNewPendingTransaction(Order $order)
     {
         $pending_transaction = new PendingTransaction(); 
         $pending_transaction->order_id = $order->id;
@@ -128,6 +132,11 @@ class OrderController extends Controller
         return view('frontend.thankyou')
         ->with('order',$order)
         ->with('user',$user);
+    }
+
+    public static function sendNewOrderEmail(Order $order, User $user)
+    {
+        event(new NewOrderGeneratedEvent($order,$user));
     }
 
     public function statusToggler($toggle,$id)

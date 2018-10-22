@@ -33,7 +33,8 @@ Route::post('/login','PassportController@login');
 Route::group(['middleware' => 'auth:api'], function(){
 
     Route::post('details','PassportController@details');
-
+    Route::post('order','PassportController@postOrder');
+    Route::post('/profile/update','PassportController@updateProfile');
 });
 
 

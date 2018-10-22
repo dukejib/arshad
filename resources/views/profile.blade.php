@@ -112,35 +112,56 @@
                     <table class="table table-bordered mt-5" style="height: 100px">
                         <thead class="thead-dark text-white text-uppercase text-center">
                             <tr>
+                                <th>Action</th>
                                 <th>Date</th>
                                 <th>Order #</th>
                                 <th>Sub Total</th>
                                 <th>Grand Total</th>
                                 <th>Status</th>
                                 <th>City</th>
-                                {{-- <th colspan="2">Action</th> --}}
                             </tr>
                         </thead>
-                        @foreach($orders as $order)
-                            <tbody> 
-                                <tr>
-                                    <td class="align-middle">{{ $order->created_at->diffForHumans() }}</td>
-                                    <td class="align-middle">{{ $order->id }}</td>
-                                    <td class="align-middle">{{ $order->subtotal }}</td>
-                                    <td class="align-middle">{{ $order->grandtotal }}</td>
-                                    <td class="align-middle">{{ $order->status }}</td>
-                                    <td class="align-middle">{{ $order->city }}</td>
-                                    {{-- <td class="align-middle">
-                                        <a href="#"> <i class="fa fa-binoculars fa-2x text-info"></i></a>
-                                    </td> --}}
-                                    {{-- <td class="align-middle">
-                                        <a href="#"> <i class="fa fa-times-circle fa-2x text-danger"></i></a>
-                                    </td> --}}
-                                </tr>
-                            </tbody>
+                        
+                        <tbody> 
+                            @foreach($orders as $order)
 
-                        @endforeach
-                    
+                            <tr value="{{ $order->id }}">
+                                <td><a class="plusShow button" value="btn{{ $order->id }}" title="Show order Details"></a></td>
+                                <td class="align-middle">{{ $order->created_at->diffForHumans() }}</td>
+                                <td class="align-middle">{{ $order->id }}</td>
+                                <td class="align-middle">{{ $order->subtotal }}</td>
+                                <td class="align-middle">{{ $order->grandtotal }}</td>
+                                <td class="align-middle">{{ $order->status }}</td>
+                                <td class="align-middle">{{ $order->city }}</td>
+                
+                                {{-- Show Nested Data --}}
+
+                            <thead class="bg-success text-white hidden-tr {{ $order->id }}">
+                                <th>&nbsp;</th>
+                                <th colspan="3">Product</th>
+                                <th>Kg</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                            </thead>
+                            {{-- <tr class="hidden-tr"> --}}
+                            @foreach($order->order_details as $od )
+                            
+                                <tr class="bg-secondary text-white hidden-tr {{ $order->id }}">
+                                    <td>&nbsp;</td>
+                                    <td colspan="3">{{ $od->product_name }} </td>
+                                    <td>{{ $od->product_qty }} </td>
+                                    <td>{{ $od->product_price }} </td>
+                                    <td>{{ $od->product_price * $od->product_qty }} </td>
+                                    
+                                </tr>
+                                
+                            @endforeach
+                            {{-- </tr> --}}
+                            </tr> {{-- Value --}}
+
+                            @endforeach
+                        </tbody>
+
                     </table>
                    
                 </div>
@@ -178,6 +199,20 @@ function AllowNumbersOnly(e) {
       e.preventDefault();
     }
   }
+
+
+$(document).ready(function(){
+
+    $('.button').click(function(){
+        console.log(this);
+        $value = $(this).attr('value').slice(3);
+        console.log($value);
+        $(this).toggleClass('plusShow');
+        $(this).toggleClass('plusHide');
+        $('.' + $value).toggleClass('hidden-tr');
+    })
+
+})
 </script>
 
 @endsection

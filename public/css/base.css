@@ -14,3 +14,29 @@
     color:white;
     background:#dc3545;
 } */
+.plusShow{
+    background-repeat: no-repeat;
+}
+.plusShow::after{
+    content:'';
+    height:24px;
+    width:24px;
+    position:absolute;
+    background: url(../images/show.png);
+    display: block;
+}
+.plusHide{
+    display:relative
+}
+.plusHide::after{
+    content:'';
+    height:24px;
+    width:24px;
+    position:absolute;
+    background: url(../images/hide.png);
+    display: block;
+}
+
+.hidden-tr{
+    display:none;
+}

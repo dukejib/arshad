@@ -78,9 +78,7 @@
                             @endforeach
                             {{-- </tr> --}}
                         </tr>
-                  
-                            
-                      
+
                     @endforeach
                     </tbody>
                 </table>
@@ -98,7 +96,7 @@ $(document).ready(function(){
 
     $('.button').click(function(){
         console.log(this);
-        $value = $(this).attr('value').slice(3,4);
+        $value = $(this).attr('value').slice(3);
         console.log($value);
         $(this).toggleClass('show');
         $(this).toggleClass('hide');

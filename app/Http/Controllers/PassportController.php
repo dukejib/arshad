@@ -6,11 +6,14 @@ use App\User;
 use DateTime;
 use App\Product;
 use App\Profile;
+use App\OrderDetail;
+use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\OrderController;
 
 
 class PassportController extends Controller
@@ -25,9 +28,9 @@ class PassportController extends Controller
         $latest = Product::orderBy('updated_at','desc')->first();
         $date = new DateTime($latest->updated_at);
 
-        $result['success'] = true;
         $result['lastUpdate'] = $date->format('Y-m-d'); 
         $result['products'] = $products;
+        $result['success'] = true;
         return $result;
     }
 
@@ -88,9 +91,12 @@ class PassportController extends Controller
         {
             $id = uniqid();
             $user = Auth::user();
-            $result['success'] = true;
+            
             $result['unique_id'] = $this->tokenName . $id;
             $result['token'] = $user->createToken($this->tokenName . $id)->accessToken;
+            $result['name'] = $user->name;
+            $result['profile'] = $user->profile;
+            $result['success'] = true;
 
             return response()->json($result, $this-> successStatus);
         }
@@ -108,11 +114,72 @@ class PassportController extends Controller
      * @param token
      * @return \App\User,profile,orders
      */
-    public function details() 
+    public function details(Request $request) 
     { 
-        $result['user'] = Auth::user();
-        $result['profile'] = Auth::user()->profile;
-        $result['orders'] = Auth::user()->orders;
+        $req = $request->all();
+        $user = auth('api')->user();
+        $profile = Profile::where('user_id',$user->id)->get();
+        $orders = Order::where('user_id',$user->id)->with('order_details')->get();
+
+        $result['user'] = $user;
+        $result['profile'] = $profile;
+
+        if ($orders->isEmpty()){
+            return response()->json($result, $this-> successStatus);
+        }
+        $result['orders'] = $orders;
+
+        return response()->json($result, $this-> successStatus); 
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = auth('api')->user();
+        $contact = $request->contact;
+        $address = $request->address;
+        $cellnumber = $request->cellnumber;
+        $landline = $request->landline;
+        $city = $request->city;
+
+        $profile = $user->profile;
+        $profile->contact = $contact;
+        $profile->address = $address;
+        $profile->cellnumber = $cellnumber;
+        $profile->landline = $landline;
+        $profile->city = $city;
+        $profile->save();
+     
+        return response()->json($profile, $this-> successStatus); 
+    }
+
+    public function postOrder(Request $request)
+    {
+        $orders = json_decode($request->orders,false); //Data converted to json
+        // $orders = $request->orders; //Get the Order (don't use all())
+        $user = auth('api')->user();
+        $profile = $user->profile;
+        
+        $grandtotal = $orders->grandtotal;
+        $subtotal = $orders->subtotal;
+        $city = $orders->city;
+        $status = $orders->status;
+        $order_details = $orders->order_details;
+        
+        //Create Order
+        $order = OrderController::createNewOrder($user->id,$subtotal,$grandtotal,$status,$city);
+        // return gettype($order);
+        // return get_class($order);
+        //Order Details
+        $order_details = OrderController::createNewOrderDetails($order_details,$order->id);
+        //Pending Transaction
+        $pending_transaction = OrderController::createNewPendingTransaction($order);
+        //Send Email
+        $send_email = OrderController::sendNewOrderEmail($order,auth('api')->user());
+
+        // $user = auth('api')->user();
+        $result['user'] = $user;
+        $result['profile'] = $profile;
+        // $result['orders'] = $orders;
 
         return response()->json($result, $this-> successStatus); 
     }
