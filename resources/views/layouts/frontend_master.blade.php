@@ -2,9 +2,9 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
     <base href="https://www.ribsncuts.com/" />
-
+    <!-- The Title -->
     <title>Ribs n Cuts | The Meat Providers</title>
-
+    <!-- Meta -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,18 +16,21 @@
     <meta name="robots" content="index.follow">
     <meta name="csrf-token" content="{{ csrf_token() }}">
   
-    @yield('meta-tags')     {{-- Get Special Meta Tages for Facebook Share --}}
+    <!-- Get Special Meta Tages for Facebook Share -->
+    @yield('meta-tags')
 
     <!-- Style Sheets -->
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/base.css')}}">
-    {{-- <link rel="stylesheet" href="{{ asset('/css/ribsncuts.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('/css/ribsncuts.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/toastr.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/owl.theme.default.min.css')}}">
     <!-- Style Sheets -->
-
+    <!-- Laravel-Notify Css -->
+    @notifyCss
     <!-- External Style Sheets -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css'/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css"/>
 
@@ -51,54 +54,56 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122271693-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-122271693-1');
-</script>
-
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122271693-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-122271693-1');
+    </script>
 
 </head>
 
 <body>
 
-    <div class="hero">
-        {{-- FrontEnd Navigation --}}
-        @include('includes.frontend_navigation')
-        {{-- FrontEnd Content --}}
-        @yield('content')
+    <div id="app">
+        <div class="hero">
+            {{-- FrontEnd Navigation --}}
+            @include('includes.nav_front')
+            {{-- FrontEnd Content --}}
+            @yield('content')
+        </div>
+        {{-- Add Frontend Footer --}}
+        @include('includes.frontend_footer')
+        {{-- Add Login Modal --}}
+        @include('includes.login_modal')
     </div>
-    {{-- Add Frontend Footer --}}
-    @include('includes.frontend_footer')
-    {{-- Add Login Modal --}}
-    @include('includes.login_modal')
 
 
 <!-- Scripts -->
-<script src="{{ asset('/js/jquery-3.3.1.min.js') }}"></script>
 <script src="{{ asset('/js/app.js') }}"></script>
-<script src="{{ asset('/js/toastr.js') }}"></script>
+{{-- <script src="{{ asset('/js/toastr.js') }}"></script> --}}
 <script src="{{ asset('/js/ribsncuts.js') }}"></script>
 <script src="{{ asset('/js/owl.carousel.min.js') }}"></script> 
+<!-- Laravel-Notify JS-->
+@notifyJs
 
-<script>
-    @if(Session::has('success'))
+
+    {{-- @if(Session::has('success'))
         toastr.success("{{ Session::get('success') }}",'Success');
     @elseif(Session::has('info'))
         toastr.info("{{ Session::get('info') }}",'Information');
     @elseif(Session::has('error'))
         toastr.error("{{ Session::get('error') }}",'Failed');
-    @endif
-</script>
+    @endif --}}
+
+<!-- For Facebook -->
 <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '237986806787117',
-        xfbml      : true,
-        version    : 'v3.0'
+        window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '237986806787117',
+            xfbml      : true,
+            version    : 'v3.0'
       });
       FB.AppEvents.logPageView();
     };

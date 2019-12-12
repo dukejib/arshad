@@ -158,7 +158,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class, //Cart for Ribsnctus 
+        // Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class, //Cart for Ribsnctus 
+        Mckenziearts\Notify\LaravelNotifyServiceProvider::class,    // laravel-notify()
 
         /*
          * Package Service Providers...
@@ -172,7 +173,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Kim\Activity\ActivityServiceProvider::class, // "kim/activity": "^1.1" - For Onine Users Sessions
     ],
 
     /*

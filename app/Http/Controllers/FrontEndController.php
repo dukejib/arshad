@@ -12,9 +12,11 @@ class FrontEndController extends Controller
 {
 
     public function index(){
+        
         $products = Product::inRandomOrder()->get();
         return view('frontend.landing')
         ->with('products',$products);
+        // return view('backend.dashboard');
     }
 
     public function contactus(){

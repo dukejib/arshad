@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Administrator;
+namespace App\Http\Controllers\Admin;
 
 use App\Contact;
 use Illuminate\Http\Request;
@@ -9,17 +9,6 @@ use Illuminate\Support\Facades\Session;
 
 class ContactController extends Controller
 {
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('admin');
-    }
-
     /**
      * Display a listing of the resource.
      *

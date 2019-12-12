@@ -52,22 +52,36 @@
 <div class="container block-white mt-2">
 
     <div class="subheading">Our Cuts</div>
+    {{-- <div class="carousel carousel-slider">
+            <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/250/250/nature/1"></a>
+            <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/250/250/nature/2"></a>
+            <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/250/250/nature/3"></a>
+            <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/250/250/nature/4"></a>
+            <a class="carousel-item" href="#five!"><img src="https://lorempixel.com/250/250/nature/5"></a>
+          </div> --}}
 
-    <div class="owl-carousel owl-theme animated fadeInUp">
-
+    <div class="row">
         @foreach($products as $product) 
-        <!-- class='item' is required by owl-carousel >> check my.js -->
-        <div class="card">
-            <h5 class="card-header text-center bg-danger text-white rounded-0">{{ $product->title }}</h5>
-            <a href="{{ route('view.product',['slug' => $product->slug ]) }}">
-                <img class="card-img-top rounded-0" src="{{ asset('/images/products/' . $product->image) }}" alt="{{ $product->title }}">
-            </a>
-            <div class="card-body rounded-0">
-              <p class="card-text">{!! str_limit($product->description,100) !!}</p>
-              <a href="{{ route('view.product',['slug' => $product->slug ]) }}" class="btn btn-danger rounded-0">Read More!</a>
+        <div class="col s12 m4"> 
+            <div class="carousel carousel-slider">
+                    <a class="carousel-item" href="#">
+                        <div class="card">
+                            <div class="card-image">
+                                <img class="card-img-top rounded-0" src="{{ asset('/images/products/' . $product->image) }}" alt="{{ $product->title }}">
+                                <span class="card-title">{{ $product->title }}</span>
+                            </div>
+                            <div class="card-content">
+                                <p class="card-text">{!! str_limit($product->description,100) !!}</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="{{ route('view.product',['slug' => $product->slug ]) }}" class="btn btn-danger rounded-0">Read More!</a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
-        </div>
-        @endforeach
+            @endforeach
+    </div>
 
 
     </div>

@@ -1,47 +1,35 @@
-@extends('layouts.app')
+@extends('layouts.backend')
 
 @section('content')
-
-<div class="row">
-    
-    <div class="col-sm-3">
-        {{-- Sidebar Here --}}
-        @include('includes.sidebar_navigation')
-    </div>
-
-    <div class="col-sm-9">
-
-            <div class="row">
-                <div class="col-lg-10 col-sm-12 mt-4 mb-2">
-                    <h2>View All Product</h2>
-                </div>
-                <div class="col-lg-2 col-sm-12 mt-4 mb-2">
-                    <a href="{{ route('product.create')}}" class="btn btn-success btn-block">Create New</a>
-                </div>
-            <div>
-            @if(count($products)>0)
-                <div class="table-responsive-sm table-responsive-md">
-                    <table class="table table-condensed table-hover table-striped">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>Image</th>
-                                <th>Title</th>
-                                <th>Category</th>
-                                <th>Cut Source</th>
-                                <th>Best For</th>
-                                <th>Price / KG</th>
-                                <th>Description</th>
-                                <th>View</th>
-                                <th>Edit</th>
-                                {{-- <th>Delete</th> --}}
-                            </tr>
-                        </thead>
-                            
-                        <tbody>
-                        @foreach($products as $product)
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="col">
+                @if (count($products)>0)
+                <table class="table table-is-narrow">
+                    <thead class="thead-dark">
                         <tr>
+                            <th>S#</th>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Cut Source</th>
+                            <th>Best For</th>
+                            <th>Price / KG</th>
+                            <th>Description</th>
+                            <th>View</th>
+                            <th>Edit</th>
+                            {{-- <th>Delete</th> --}}
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach($products as $key => $product)
+                        <tr>
+                            <td>{{ $key + 1}}</td>
                             <td>
-                                <img src="{{ asset('/images/products/' . $product->image) }}" alt="" srcset="" width="100px">
+                                <img src="{{ asset('/images/products/' . $product->image) }}" alt="" srcset=""
+                                    width="100px">
                             </td>
                             <td>{{ $product->title }}</td>
                             <td>{{ $product->category }}</td>
@@ -50,34 +38,32 @@
                             <td>{{ $product->price_per_kg }}</td>
                             <td>{{ str_limit($product->description,25) }}</td>
                             <td>
-                                <a href="{{ route('product.show',['id' => $product->id]) }}" class="btn btn-success">Show</a></td>
+                                <a href="{{ route('product.show',['product' => $product]) }}">@fa('binoculars','fa-fw
+                                    has-text-success')</a></td>
                             <td>
-                                <a href="{{ route('product.edit',['id' => $product->id]) }}" class="btn btn-info">Edit</a>
+                                <a href="{{ route('product.edit',['product' => $product]) }}">@fa('edit','fa-fw
+                                    has-text-primary')</a>
                             </td>
                             {{-- <td> --}}
-                                {{-- <form action="{{ route('product.destroy',['id' => $product->id]) }}" method="post"> --}}
-                                    {{ csrf_field() }}
-                                    {{--This is necessary if using route::resource--}}
-                                    {{ method_field('DELETE') }}
-                                    {{-- <button class="btn btn-xs btn-danger" type="submit">
-                                        <i class="fa fa-close fa-trash"></i>
-                                    </button> --}}
-                                {{-- </form> --}}
+                            {{-- <form action="{{ route('product.destroy',['id' => $product->id]) }}" method="post">
+                            --}}
+                            {{ csrf_field() }}
+                            {{--This is necessary if using route::resource--}}
+                            {{ method_field('DELETE') }}
+                            {{-- <button class="btn btn-xs btn-danger" type="submit">
+                                            <i class="fa fa-close fa-trash"></i>
+                                        </button> --}}
+                            {{-- </form> --}}
                             {{-- </td> --}}
                         </tr>
                         @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            @else
-                <h3 class="bg-info">There is no Product Available Yet</h3>
-            @endif
-              
-
+                    </tbody>
+                </table>
+                @else
+                <h5>Database is Empty</h5>
+                @endif
+            </div>
+        </div>
     </div>
-
-</div>
-
-
-
+</section>
 @endsection

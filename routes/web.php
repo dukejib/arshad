@@ -76,3 +76,14 @@ Route::get('/order/thankyou/{order}/{user}','OrderController@thankyou')->name('t
 // Route::get('/home', 'HomeController@index')->name('home'); 
 /** Authenticted Routes */
 //======================//
+
+/** Admin Routes */
+//===============================//
+
+Route::get('admin','Admin\BackEndController@showLogin')->name('admin.login');
+Route::post('admin','Admin\BackEndController@postLogin')->name('admin.login');
+Route::get('dashboard','Admin\BackEndController@dashboard')->name('admin.dashboard');
+
+Route::resource('product','Admin\ProductController');
+Route::resource('contact', 'Admin\ContactController');
+Route::get('contact/{type}','Admin\ContactController@index')->name('contact.index');
